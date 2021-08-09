@@ -1,0 +1,157 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Dokumenfasa;
+use Illuminate\Http\Request;
+
+class DokumenfasaController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $dokumenfasas = Dokumenfasa::all();
+        return view('dokumenfasa',[
+            'dokumenfasas'=>$dokumenfasas,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $dokumenfasa = new Dokumenfasa;
+
+        $dokumenfasa->nama_dok = $request->nama_dok;
+        $dokumenfasa->fasa = $request->fasa;
+
+        if ($dokumenfasa->nama_dok == null) {
+            die("Sila masukkan maklumat yang kosong");
+        } elseif ($dokumenfasa->fasa == null) {
+            die("Sila masukkan maklumat yang kosong");
+        } 
+
+        if($request->file()) {
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            
+            $extension = $request->file('file')->extension();
+            $saiz = $request->file('file')->getSize();
+            $saiz = $saiz / 1000;
+// dd($extension);
+            if ($extension != "pdf") {
+                die("Fail hendaklah dalam bentuk pdf");
+            }
+
+            if ($saiz > 2000) {
+                die("Fail tidak boleh melebihi 2mb");
+            }
+            $dokumenfasa->saiz = $request->file('file')->getSize();
+            $dokumenfasa->nama_fail = $request->file->getClientOriginalName();
+            $dokumenfasa->laluan_fail = '/dokumenfasa/' . $filePath;
+            $dokumenfasa->save();
+        }
+        $dokumenfasa->save();
+        return redirect('/dokumenfasa/');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Dokumenfasa  $dokumenfasa
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Dokumenfasa $dokumenfasa)
+    {
+        //
+        return view('dokumenfasa',[
+            'dokumenfasa'=>$dokumenfasa
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Dokumenfasa  $dokumenfasa
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Dokumenfasa $dokumenfasa)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Dokumenfasa  $dokumenfasa
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Dokumenfasa $dokumenfasa)
+    {
+        //
+        $dokumenfasa->nama_dok = $request->nama_dok;
+        $dokumenfasa->fasa = $request->fasa;
+
+        if ($dokumenfasa->nama_dok == null) {
+            die("Sila masukkan maklumat yang kosong");
+        } elseif ($dokumenfasa->fasa == null) {
+            die("Sila masukkan maklumat yang kosong");
+        } 
+        
+        if($request->file()) {
+            $fileName = time().'_'.$request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            
+            $extension = $request->file('file')->extension();
+            $saiz = $request->file('file')->getSize();
+            $saiz = $saiz / 1000;
+// dd($extension);
+            if ($extension != "pdf") {
+                die("Fail hendaklah dalam bentuk pdf");
+            }
+
+            if ($saiz > 2000) {
+                die("Fail tidak boleh melebihi 2mb");
+            }
+            
+            $dokumenfasa->saiz = $request->file('file')->getSize();
+            $dokumenfasa->nama_fail = $request->file->getClientOriginalName();
+            $dokumenfasa->laluan_fail = '/dokumenfasa/' . $filePath;
+            $dokumenfasa->save();
+        }
+        $dokumenfasa->save();
+        return redirect('/dokumenfasa/');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Dokumenfasa  $dokumenfasa
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Dokumenfasa $dokumenfasa)
+    {
+        //
+    }
+}

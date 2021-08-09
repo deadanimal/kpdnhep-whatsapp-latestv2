@@ -1,0 +1,82 @@
+@extends('layouts.main')
+@section('content')
+<h1>Senarai Aduan</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Muat naik
+</button>
+<div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+                <h4 class="modal-title">Muat naik dokumen</h4>
+            </div>
+            <form action="/dokumenfasa" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Nama dokumen</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" name="nama_dok"></div>
+                    </div>
+                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Fasa</label>
+                        <div class="col-sm-10"><input type="text" class="form-control" name="fasa"></div>
+                    </div>
+                    @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                    @endif
+
+                    @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+
+                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Lampiran dokumen</label>
+                        <div class="custom-file">
+                            <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                            <!-- <label class="custom-file-label" for="chooseFile">Select file</label> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="ibox ">
+            <div class="ibox-content">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nama dokumen</th>
+                            <th>Fasa</th>
+                            <th>Lampiran</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($dokumenfasas as $dokumenfasa)
+                        <tr>
+                            <td>{{$dokumenfasa->nama_dok}}</td>
+                            <td>{{$dokumenfasa->fasa}}</td>
+                            <td>{{$dokumenfasa->nama_fail}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@stop
