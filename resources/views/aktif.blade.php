@@ -12,19 +12,20 @@
                             <th>No telefon</th>
                             <th>Nama</th>
                             <th>Mesej terakhir</th>
-                            <th>Tarikh</th>
-                            <!-- <th>Bot aktif</th> -->
+                            <th>Tarikh Mula</th>
+                            <th>Pegawai</th>
                             <th>Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($biliks as $bilik)
-
+                        @if(!$bilik['active'])
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
-                            <td>{{$bilik['last_message']}}</td>
-                            <td>{{$bilik['updated_at']}}</td>
+                            <td>{{$bilik['updated_at']}}</td>                            
+                            <td>{{$bilik['created_at']}}</td>
+                            <td>{{$bilik['officer_name']}}</td>
                             <!-- <td>
                                 @if($bilik['active']) 
                                     Ya <a href="/room/{{$bilik['id']}}/aktif">Nyahaktif bot?</a>
@@ -39,6 +40,7 @@
 
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

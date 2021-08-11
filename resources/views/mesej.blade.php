@@ -8,12 +8,22 @@
 <div class="row">
     <div class="col-lg-4">
         <a href="/aktif">
-    <button class="btn btn-success">Aktif <i class="fa fa-bell" aria-hidden="true"></i></button>
-</a>
+            <button class="btn btn-success btn-block" style="height:120px"><h1>Aktif <i class="fa fa-bell" aria-hidden="true"></i></h1></button>
+        </a>
+    </div>
+    <div class="col-lg-4">
+        <a href="/tugasans">
+            <button class="btn btn-success btn-block" style="height:120px"><h1>Tugasan <i class="fa fa-tasks" aria-hidden="true"></i></h1></button>
+        </a>
+    </div>
+    <div class="col-lg-4">
+        <a href="/room">
+            <button class="btn btn-success btn-block" style="height:120px"><h1>Semua <i class="fa fa-bell" aria-hidden="true"></i></h1></button>
+        </a>
     </div>
 </div>
-<div class="row d-flex justify-content-center">
-    <div class="col-lg-8">
+<div class="row d-flex justify-content-center mt-3">
+    <div class="col-lg-8 mt-3">
 
         <div class="ibox chat-view">
             <div class="chat-discussion">
@@ -21,7 +31,7 @@
                 @if ($mesej['direction'] == "receive")
                 <div class="chat-message left">
                     <div class="message">
-                        <a class="message-author" href="#"> {{$rooms['name']}} </a>
+                        <a class="message-author" href="#"> {{$room['name']}} </a>
                         <span class="message-date">{{$mesej['created_at']}}</span>
                         <span class="message-content">
                             {{$mesej['message_text']}}
@@ -43,15 +53,11 @@
             </div>
         </div>
 
-        <div class="form-group text-right">
-            <form action="/hantarrr/{{$rooms['id']}}" method="POST">
+        <div class="form-group text-right my-3">
+            <form action="/hantarrr/{{$room['id']}}" method="POST">
                 @csrf
                 <select id="template" class="form-control" onchange="malas()">
                     <option value=0 selected>Pilih Template</option>
-                    <option value=1>Template 1</option>
-                    <option value=2>Template 2</option>
-                    <option value=3>Template 3</option>
-                    <option value=4>Template 4</option>
                     <option value=5>Agensi</option>
                     <option value=6>Pertanyaan/Cadangan</option>
                 </select>
@@ -79,7 +85,7 @@
                 <div class="hide" id="pentadbir">
                     <h1>test2</h1>
                 </div> -->
-                <textarea class="form-control message-input" id="chatbox" name="hantar" placeholder="Enter message text"></textarea>
+                <textarea class="form-control message-input my-3" id="chatbox" name="hantar" placeholder="Enter message text"></textarea>
                 <button class="btn btn-primary" type="submit">Hantar</button>
                 <div class="hide" id="hidden_div_catatan">
                     <h1>test</h1>
@@ -89,6 +95,18 @@
                 </div>
             </form>
         </div>
+
+    </div>
+    <div class="col-lg-4">
+
+        <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{$room['name']}} - {{$room['phone']}}</h5>
+            <p class="card-text">Status bot: {{$room['active']}}</p>
+            <a href="/room/{{$room['id']}}/aktif" class="btn btn-primary">Aktifkan Bot?</a>
+            <a href="/room/{{$room['id']}}/aktif" class="btn btn-danger">Nyahaktifkan Bot?</a>
+        </div>
+        </div>    
 
     </div>
 </div>

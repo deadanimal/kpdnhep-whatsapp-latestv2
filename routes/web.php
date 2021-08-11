@@ -23,6 +23,7 @@ Route::get('/sm', function () {
 
 use App\Http\Controllers\RoomController;
 Route::get('/room/{room}/aktif', [RoomController::class, 'aktif_bot']);
+Route::post('/room/{room}/officer', [RoomController::class, 'add_officer']);
 Route::resource('room', RoomController::class);
 
 use App\Http\Controllers\MesejController;

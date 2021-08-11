@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group ">
                         <label style="padding-left:0px; text-align: left;" class="col-sm-2 col-form-label">Lampiran</label>
-                        <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                        <input type="file" name="dokumen" class="custom-file-input" id="chooseFile">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -79,7 +79,7 @@
                             <td>{{$dokumenfasa->nama_fail}}</td>
                             <td>{{$dokumenfasa->catatan}}</td>
                             <td>
-                                <a href="{{$dokumenfasa->laluan_fail}}" download>
+                                <a href="http://blockchain-launcher.sgp1.digitaloceanspaces.com/{{$dokumenfasa->laluan_fail}}" download>
                                     <button class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></button>
                                 </a>
                             </td>

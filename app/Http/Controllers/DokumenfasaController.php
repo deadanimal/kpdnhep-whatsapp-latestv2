@@ -42,7 +42,7 @@ class DokumenfasaController extends Controller
     public function store(Request $request)
     {
         //
-        $extension = $request->file('file')->getClientOriginalExtension();
+        $extension = $request->file('dokumen')->getClientOriginalExtension();
         if ($extension != "pdf") {
             return redirect('/laporanhelpdesk')->withErrors('Sila masukkan lampiran berbentuk pdf.');
         }
@@ -54,12 +54,12 @@ class DokumenfasaController extends Controller
         $dokumenfasa->catatan = $request->catatan;
 
         if ($request->file()) {
-            $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = Storage::putFile('najhan', $request->file('file'), 'public');#$request->file('file')->storeAs('najhan', $fileName, 'public');
-            $extension = $request->file('file')->getClientOriginalExtension();
+            $fileName = time() . '_' . $request->file('dokumen')->getClientOriginalName();
+            $filePath = Storage::putFile('najhan', $request->file('dokumen'), 'public');#$request->file('file')->storeAs('najhan', $fileName, 'public');
+            $extension = $request->file('dokumen')->getClientOriginalExtension();
             
             if ($extension == "pdf") {
-                $saiz = $request->file('file')->getSize();
+                $saiz = $request->file('dokumen')->getSize();
                 if($saiz) {
                     $saiz = $saiz / 1000;
                 } else {
@@ -68,9 +68,10 @@ class DokumenfasaController extends Controller
                 if ($saiz > 2000) {
                     echo "<script>alert('Saiz lampiran tidak boleh melebihi 2mb.');</script>";
                 } else {
-                    $dokumenfasa->saiz = $request->file('file')->getSize();
-                    $dokumenfasa->nama_fail = $request->file->getClientOriginalName();
-                    $dokumenfasa->laluan_fail = '/dokumenfasa/' . $filePath;
+                    $dokumenfasa->saiz = $request->file('dokumen')->getSize();
+                    $dokumenfasa->nama_fail = time() . '_' . $request->file('dokumen')->getClientOriginalName();
+                    $dokumenfasa->laluan_fail = $filePath;
+                    $dokumenfasa->save();
 
                     $rules = [
                         'nama_dok' => 'required',

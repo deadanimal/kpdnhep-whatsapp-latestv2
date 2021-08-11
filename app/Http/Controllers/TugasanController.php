@@ -104,11 +104,11 @@ class TugasanController extends Controller
         $mesejs = $response->json();
         $try = json_encode($mesejs);
         $mesejs = json_decode($try, TRUE)['messages'];
-        $rooms = json_decode($try, TRUE)['room'];
+        $room = json_decode($try, TRUE)['room'];
 
         return view('mesej', [
             'mesejs' => $mesejs,
-            'rooms' => $rooms
+            'room' => $room
         ]);
     }
 

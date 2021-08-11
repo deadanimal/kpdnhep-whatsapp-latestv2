@@ -18,9 +18,15 @@ class AktifController extends Controller
         //
         $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
         $response = Http::get($url);
-        $biliks = $response->json();
+        $biliks = $response->json()['rooms'];
+        // $biliks = json_encode($biliks);
         $biliks = json_encode($biliks);
-        $biliks = json_decode($biliks, TRUE)['rooms'];
+        $biliks = json_decode($biliks, TRUE);
+        // dd($biliks);
+        // foreach($biliks as $bilik) {
+        //     $bilik->pegawai = 'asd';
+        // }
+
         // dd($response['rooms']);
 
         return view('aktif', [

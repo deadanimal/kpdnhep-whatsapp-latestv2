@@ -214,8 +214,8 @@ class LaporanhelpdeskController extends Controller
                     // Validator::make($request->input(), $rules, $messages)->validate();
                     
                     $laporanhelpdesk->save();
-    
-                    $recipient = ["harizhasani@pipeline-network.com"];
+
+                    $recipient = ["harizhasani@pipeline-network.com", "najhan.mnajib@gmail.com"];
                     Mail::to($recipient)->send(new Helpdesk());
                     return redirect('/laporanhelpdesk/');
                 }

@@ -37,10 +37,10 @@
         </div>
 
         <div class="form-group text-right">
-            <form action="/hantarrr/{{$rooms['id']}}" method="POST">
+            <form action="/room/{{$rooms['id']}}/officer" method="POST">
                 @csrf
-                <button class="btn btn-success">kembali</button>
-                <button class="btn btn-primary">tambang tugas</button>
+                <a href="/aktif" class="btn btn-success">Kembali</a>
+                <button type="submit" class="btn btn-primary">Tambang tugas</button>
             </form>
         </div>
 
