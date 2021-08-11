@@ -40,7 +40,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label style="padding-left:0px; text-align: left;"  class="col-sm-2 col-form-label">Catatan</label>
+                        <label style="padding-left:0px; text-align: left;" class="col-sm-2 col-form-label">Catatan</label>
                         <textarea class="form-control message-input" name="catatan"></textarea>
                     </div>
                     <div class="form-group ">
@@ -68,6 +68,7 @@
                             <th>Fasa</th>
                             <th>Lampiran</th>
                             <th>Catatan</th>
+                            <th>Tindakan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +78,11 @@
                             <td>{{$dokumenfasa->fasa}}</td>
                             <td>{{$dokumenfasa->nama_fail}}</td>
                             <td>{{$dokumenfasa->catatan}}</td>
+                            <td>
+                                <a href="{{$dokumenfasa->laluan_fail}}" download>
+                                    <button class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></button>
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

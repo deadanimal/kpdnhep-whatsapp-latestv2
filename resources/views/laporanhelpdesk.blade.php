@@ -119,6 +119,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                <td>
+                                <a href="{{$laporanhelpdesk->laluan_fail}}" download>
+                                    <button class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></button>
+                                </a>
+                            </td>
                             </td>
                         </tr>
                         @endforeach
