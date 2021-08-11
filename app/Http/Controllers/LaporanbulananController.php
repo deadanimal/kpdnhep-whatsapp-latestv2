@@ -16,8 +16,10 @@ class LaporanbulananController extends Controller
     {
         //
         $laporanbulanans = Laporanbulanan::all();
-        return view('laporanbulanan',[
-            'laporanbulanans'=>$laporanbulanans,
+
+
+        return view('laporanbulanan', [
+            'laporanbulanans' => $laporanbulanans,
         ]);
     }
 
@@ -57,8 +59,8 @@ class LaporanbulananController extends Controller
     public function show(Laporanbulanan $laporanbulanan)
     {
         //
-        return view('laporanbulanan',[
-            'laporanbulanan'=>$laporanbulanan
+        return view('laporanbulanan', [
+            'laporanbulanan' => $laporanbulanan
         ]);
     }
 
@@ -112,4 +114,25 @@ class LaporanbulananController extends Controller
         return redirect('laporanbulanan');
     }
 
+    public function jana(Request $request)
+    {
+        $tahun = $request->query('tahun');
+        if (empty($tahun)) {
+            $tahun = 2021;
+        } else {
+            $lol = 'ada tahun ' . $tahun;
+        }
+
+        $laporanbul = [
+            [
+                'nama' => 'Aduan KPDNHEP',
+                'bulan' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            ],
+            
+        ];
+
+        return view('laporanbulanan', [
+            'laporanbul' => $laporanbul
+        ]);
+    }
 }

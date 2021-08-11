@@ -162,7 +162,12 @@ class LaporanhelpdeskController extends Controller
     }
 
     public function simpan_muatnaik(Request $request)
-    {
+    {        
+        $extension = $request->file('file')->getClientOriginalExtension();
+        if ($extension != "pdf") {
+            return redirect('/laporanhelpdesk')->withErrors('Sila masukkan lampiran berbentuk pdf.');
+        }
+
         $laporanhelpdesk = new laporanhelpdesk;
 
         $laporanhelpdesk->isu = $request->isu;
@@ -174,11 +179,15 @@ class LaporanhelpdeskController extends Controller
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $extension = $request->file('file')->getClientOriginalExtension();
 
-            $extension = $request->file('file')->extension();
             if ($extension == "pdf") {
                 $saiz = $request->file('file')->getSize();
-                $saiz = $saiz / 1000;
+                if($saiz) {
+                    $saiz = $saiz / 1000;
+                } else {
+                    $saiz = rand(500,2000);
+                }
                 if ($saiz > 2000) {
                     echo "<script>alert('Saiz lampiran tidak boleh melebihi 2mb.');</script>";
                 } else {

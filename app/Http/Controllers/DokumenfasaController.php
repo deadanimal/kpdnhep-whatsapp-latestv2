@@ -41,6 +41,11 @@ class DokumenfasaController extends Controller
     public function store(Request $request)
     {
         //
+        $extension = $request->file('file')->getClientOriginalExtension();
+        if ($extension != "pdf") {
+            return redirect('/laporanhelpdesk')->withErrors('Sila masukkan lampiran berbentuk pdf.');
+        }
+
         $dokumenfasa = new Dokumenfasa;
 
         $dokumenfasa->nama_dok = $request->nama_dok;
@@ -50,8 +55,8 @@ class DokumenfasaController extends Controller
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-
-            $extension = $request->file('file')->extension();
+            $extension = $request->file('file')->getClientOriginalExtension();
+            
             if ($extension == "pdf") {
                 $saiz = $request->file('file')->getSize();
                 $saiz = $saiz / 1000;

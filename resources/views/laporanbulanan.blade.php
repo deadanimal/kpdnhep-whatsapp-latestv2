@@ -15,7 +15,7 @@
         <div class="ibox">
             <div class="ibox-content">
                 <div class="form-group row">
-                    <form action="/showstat">
+                    <form action="/jana">
                         @csrf
                         <div class="col-lg-2">
                             <label class=" col-form-label">Pilih Tahun</label>
@@ -37,15 +37,13 @@
         </div>
     </div>
 </div>
-@foreach ($laporanbulanans as $laporanbulanan)
-@if($laporanbulanan->tahun != null)
+
 <div class="row">
     <div class="col">
         <div class="ibox-content">
             <div class="row">
                 <div class="col-lg-10">
-                    <h1>{{$laporanbulanan->tahun}}</h1>
-                    <h2>198 009</h2>
+                    <h1>{{$tahun}}</h1>
                 </div>
                 <div class="col-lg-2">
                     <div class="html5buttons">
@@ -63,12 +61,30 @@
                     </div>
                 </div>
             </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th>Januari</th>
+                        <th>Februari</th>
+                        <th>Mac</th>
+                        <th>April</th>
+                        <th>May</th>
+                        <th>Jun</th>
+                        <th>Julai</th>
+                        <th>Ogos</th>
+                        <th>September</th>
+                        <th>Oktober</th>
+                        <th>November</th>
+                        <th>Disember</th>
+                    </tr>
+                </thead>
+            </table>
+            @foreach ($laporanbulanans as $laporanbulanan)
 
-            <div id="chartdiv"></div>
         </div>
     </div>
 </div>
-@endif
 @endforeach
 
 @stop

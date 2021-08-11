@@ -12,19 +12,7 @@
                     <form action="/cari" method="POST">
                         @csrf
                         <div class="col-lg-2">
-                            <input type="date" class="form-control" placeholder="Tarikh" name="tarikh">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="text" placeholder="No telefon" class="form-control" name="notelefon">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="text" placeholder="Pegawai" class="form-control" name="name">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="text" placeholder="No aduan" class="form-control" name="noaduan">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="text" placeholder="Nama pengadu" class="form-control" name="namapengadu">
+                            <input type="text" placeholder="No telefon" class="form-control" name="phone">
                         </div>
                         <div class="col-lg-2">
                             <button type="submit" class="btn btn-w-m btn-success">Cari</button>
@@ -48,6 +36,7 @@
                             <th>Nama</th>
                             <th>Mesej terakhir</th>
                             <th>Tarikh</th>
+                            <th>Bot aktif</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +47,13 @@
                             <td>{{$bilik['name']}}</td>
                             <td>{{$bilik['last_message']}}</td>
                             <td>{{$bilik['updated_at']}}</td>
+                            <td>
+                                @if($bilik['active']) 
+                                    Ya <a href="/room/{{$bilik['id']}}/aktif">Nyahaktif bot?</a>
+                                @else
+                                    Tidak <a href="/room/{{$bilik['id']}}/aktif">Aktifkan bot?</a>
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

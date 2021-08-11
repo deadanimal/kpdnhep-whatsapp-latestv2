@@ -114,9 +114,11 @@ class RoomController extends Controller
     public function cari(Request $request)
     {
         $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
-        $response = Http::where([
-            ['name', '=', $request->name]
-        ])->get($url);
+        $phone = $request->phone;
+        $response = Http::post($url, [
+            "phone" => $phone
+        ]);
+
         $biliks = $response->json();
         $biliks = json_encode($biliks);
         $biliks = json_decode($biliks, TRUE)['rooms'];
@@ -124,5 +126,17 @@ class RoomController extends Controller
         return view('room', [
             'biliks' => $biliks,
         ]);
+    }
+
+    public function aktif_bot($room_id)
+    {
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/".$room_id;
+        $response = Http::get($url);
+
+        if ($response->successful()) {
+            return redirect('/room');
+        } else {
+            return redirect('/room')->withErrors('Tak dapat');
+        }  
     }
 }

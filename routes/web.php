@@ -22,6 +22,7 @@ Route::get('/sm', function () {
 });
 
 use App\Http\Controllers\RoomController;
+Route::get('/room/{room}/aktif', [RoomController::class, 'aktif_bot']);
 Route::resource('room', RoomController::class);
 
 use App\Http\Controllers\MesejController;
@@ -64,6 +65,6 @@ Route::post('/simpan_muatnaik', [LaporanhelpdeskController::class, 'simpan_muatn
 
 Route::post('/kemaskini/{id}', [LaporanhelpdeskController::class, 'kemaskini']);
 
-Route::get('/cari', [RoomController::class, 'cari']);
+Route::post('/cari', [RoomController::class, 'cari']);
 
 Route::post('/hantarrr/{id}', [TugasanController::class, 'hantarrr']);
