@@ -68,3 +68,5 @@ Route::post('/kemaskini/{id}', [LaporanhelpdeskController::class, 'kemaskini']);
 Route::post('/cari', [RoomController::class, 'cari']);
 
 Route::post('/hantarrr/{id}', [TugasanController::class, 'hantarrr']);
+
+Route::post('/jana', [LaporanbulananController::class, 'jana']);

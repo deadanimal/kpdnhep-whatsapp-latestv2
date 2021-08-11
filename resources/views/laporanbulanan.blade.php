@@ -15,7 +15,7 @@
         <div class="ibox">
             <div class="ibox-content">
                 <div class="form-group row">
-                    <form action="/jana">
+                    <form action="/jana" method="POST">
                         @csrf
                         <div class="col-lg-2">
                             <label class=" col-form-label">Pilih Tahun</label>
@@ -43,7 +43,6 @@
         <div class="ibox-content">
             <div class="row">
                 <div class="col-lg-10">
-                    <h1>{{$tahun}}</h1>
                 </div>
                 <div class="col-lg-2">
                     <div class="html5buttons">
@@ -64,28 +63,28 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Kategori</th>
-                        <th>Januari</th>
-                        <th>Februari</th>
-                        <th>Mac</th>
-                        <th>April</th>
-                        <th>May</th>
-                        <th>Jun</th>
-                        <th>Julai</th>
-                        <th>Ogos</th>
-                        <th>September</th>
-                        <th>Oktober</th>
-                        <th>November</th>
-                        <th>Disember</th>
+                        <!-- @foreach ($laporanbulanans as $laporanbulanan) -->
+                        
+                        <!-- <th></th> -->
+                        <!-- @endforeach -->
                     </tr>
                 </thead>
+                <tbody>
+                    <!-- @foreach ($laporanbulanans as $laporanbulanan) -->
+                    <tr>
+                        <td>{{$laporanbulanans->agensi[0]}}</td>
+                        <!-- <td>{{$laporanbulanan->nama}}</td>
+                        <td>{{$laporanbulanan->bulan}}</td> -->
+                    </tr>
+                    <!-- @endforeach -->
+                </tbody>
             </table>
-            @foreach ($laporanbulanans as $laporanbulanan)
+
 
         </div>
     </div>
 </div>
-@endforeach
+
 
 @stop
 <script src="js/inspinia.js"></script>

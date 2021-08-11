@@ -123,16 +123,21 @@ class LaporanbulananController extends Controller
             $lol = 'ada tahun ' . $tahun;
         }
 
-        $laporanbul = [
-            [
-                'nama' => 'Aduan KPDNHEP',
-                'bulan' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-            ],
+        $laporanbulanans = [
+            "agensi"=> [
+                "nama"=> "KPDNHEP",
+                "bulan"=> [1, 2, 3]
+            ]   
+            ];
+        
+        // ' array(
+        //     array(
+        //         'nama' => 'Aduan KPDNHEP',
+        //         'bulan' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        //     )
             
-        ];
+        // );
 
-        return view('laporanbulanan', [
-            'laporanbul' => $laporanbul
-        ]);
+        return view('laporanbulanan', compact('tahun', 'laporanbulanans'));
     }
 }
