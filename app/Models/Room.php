@@ -12,4 +12,8 @@ class Room extends Model
     {
         return $this->hasMany(Mesej::class);
     }
+    public function tugasans()
+    {
+        return $this->hasMany(Tugasan::class);
+    }
 }

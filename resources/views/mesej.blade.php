@@ -1,62 +1,79 @@
 @extends('layouts.main')
+<style>
+    .hide {
+        display: none;
+    }
+</style>
 @section('content')
 <div class="row d-flex justify-content-center">
     <div class="col-lg-8">
+
         <div class="ibox chat-view">
             <div class="chat-discussion">
+                @foreach($mesejs as $mesej)
+                @if ($mesej['direction'] == "receive")
                 <div class="chat-message left">
                     <div class="message">
-                        <a class="message-author" href="#"> {{$room_selected->namapengadu}} </a>
-                        <span class="message-date"> Mon Jan 26 2015 - 18:39:23 </span>
+                        <a class="message-author" href="#"> {{$rooms['name']}} </a>
+                        <span class="message-date">{{$mesej['created_at']}}</span>
                         <span class="message-content">
-                            Hello
+                            {{$mesej['message_text']}}
                         </span>
                     </div>
                 </div>
-                @if ($room_selected->pegawai != null)
-                @foreach($mesejs as $mesej)
+                @else
                 <div class="chat-message right">
                     <div class="message">
-                        <a class="message-author" href="#"> {{$room_selected->pegawai}} </a>
-                        <span class="message-date"> Fri Jan 25 2015 - 11:12:36 </span>
+                        <a class="message-author" href="#"> Pegawai </a>
+                        <span class="message-date"> {{$mesej['created_at']}} </span>
                         <span class="message-content">
-                            {{$mesej->chat}}
+                            {{$mesej['message_text']}}
                         </span>
                     </div>
                 </div>
-                @endforeach
                 @endif
+                @endforeach
             </div>
-            @if ($room_selected->pegawai != null)
-            <div class="form-group text-right">
-                <form action="/mesej" method="POST">
-                @csrf
-                    <textarea class="form-control message-input" name="chat" placeholder="Enter message text"></textarea>
-                    <button class="btn btn-primary" type="submit">Hantar</button>
-                </form>
-            </div>
-            @endif
         </div>
-        @if ($room_selected->pegawai == null)
-        <a class="btn btn-primary btn-rounded btn-block" href="/terimakerja/{{$room_selected->id}}"><i class="fa fa-info-circle"></i> Tambang tugasan</a>
-        @else
-        <a class="btn btn-danger btn-rounded btn-block" href="/buangkerja/{{$room_selected->id}}"><i class="fa fa-info-circle"></i> Buang tugasan</a>
-        @endif
-    </div>
-    <div class="col-lg-4">
-        <div class="ibox-content">
-            <ul class="list-group clear-list m-t">
-                <li class="list-group-item fist-item text-center">
-                    <img alt="image" class="img-circle" src="{{ url('img/default.jpg') }}" style="width: 50%" />
-                    <h1>{{$room_selected->notelefon}}</h1>
-                    <h3>Aktif 4 minit lepas</h3>
-                </li>
-                <!-- <li class="list-group-item ">
-                    <h1>Fail dikongsi</h1>
-                </li> -->
-            </ul>
 
+        <div class="form-group text-right">
+            <form action="/hantarrr/{{$rooms['id']}}" method="POST">
+                @csrf
+                <select name="status" class="form-control" onchange="showDiv(this)">
+                    <option value="0">Test</option>
+                    <option value="1">Test1</option>
+                </select>
+                <div class="hide" id="hiden_div_catatan">
+                    <h1>test</h1>
+                </div>
+                <div class="hide" id="pentadbir">
+                    <h1>test2</h1>
+                </div>
+                <textarea class="form-control message-input" name="hantar" placeholder="Enter message text"></textarea>
+                <button class="btn btn-primary" type="submit">Hantar</button>
+                <div class="hide" id="hidden_div_catatan">
+                    <h1>test</h1>
+                </div>
+                <div class="hide" id="hidden_div_pentadbir">
+                    <h1>test2</h1>
+                </div>
+            </form>
         </div>
+
     </div>
 </div>
 @stop
+
+<script type="text/javascript">
+    function showDiv(select) {
+        if (select.value == 0) {
+            document.getElementById('hidden_div_catatan').style.display = "block";
+            document.getElementById('hidden_div_pentadbir').style.display = "none";
+        } else if (select.value == 1) {
+            document.getElementById('hidden_div_catatan').style.display = "none";
+            document.getElementById('hidden_div_pentadbir').style.display = "block";
+        }
+    }
+
+    
+</script>

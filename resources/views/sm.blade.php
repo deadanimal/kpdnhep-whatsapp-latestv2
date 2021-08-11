@@ -20,6 +20,9 @@
                                     <li>
                                         <a class="nav-link text-center" href="/tugasans">Tugasan</a>
                                     </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="/aktif">Aktif</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-sm-4">
@@ -31,17 +34,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4 col-xs-6">
-                        <i class="fa fa-info text-center" style="font-size: 120px; color:#A478B1"></i>
-                        <h3>Pentadbiran</h3>
-                    </div>
-                    <div class="col-sm-8 col-xs-6">
-                        <div class="row">
-                            <div class="col-">
+                            <div class="col-sm-4">
                                 <h4>Senarai Pentadbiran</h4>
                                 <ul>
                                     <li><a class="nav-link text-center" href="/laporanhelpdesk">Laporan Helpdesk</a>

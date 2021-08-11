@@ -6,6 +6,7 @@ use App\Models\Tugasan;
 use App\Models\Room;
 use App\Models\Mesej;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class TugasanController extends Controller
 {
@@ -17,12 +18,17 @@ class TugasanController extends Controller
     public function index()
     {
         //
-        $rooms = Room::where([
-            ['pegawai', '=', "najhan"]
-        ])->get();
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
+        $response = Http::get($url);
+        $biliks = $response->json();
+        $biliks = json_encode($biliks);
+        $biliks = json_decode($biliks, TRUE)['rooms'];
+        // dd($response['rooms']);
+        $rooms = Room::all();
 
         return view('tugasans', [
             'rooms' => $rooms,
+            'biliks' => $biliks
         ]);
     }
 
@@ -93,12 +99,38 @@ class TugasanController extends Controller
     }
     public function hantar($id)
     {
-        $mesejs = Mesej::all();
-        $room_selected = Room::where("id", $id)->first();
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
+        $response = Http::get($url);
+        $mesejs = $response->json();
+        $try = json_encode($mesejs);
+        $mesejs = json_decode($try, TRUE)['messages'];
+        $rooms = json_decode($try, TRUE)['room'];
 
         return view('mesej', [
             'mesejs' => $mesejs,
-            'room_selected' => $room_selected,
+            'rooms' => $rooms
+        ]);
+    }
+
+    public function hantarrr(Request $request, $id)
+    {
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
+    
+        $hantar = $request->hantar;
+        $send = Http::post($url, [
+            "message_text" => $hantar,
+        ]);
+
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
+        $response = Http::get($url);
+        $mesejs = $response->json();
+        $try = json_encode($mesejs);
+        $mesejs = json_decode($try, TRUE)['messages'];
+        $rooms = json_decode($try, TRUE)['room'];
+
+        return view('mesej', [
+            'mesejs' => $mesejs,
+            'rooms' => $rooms
         ]);
     }
 }

@@ -18,6 +18,7 @@ class CreateDokumenfasasTable extends Migration
             $table->timestamps();
             $table->string('nama_dok', 50);
             $table->string('fasa', 50);
+            $table->string('catatan', 255);
             $table->string('nama_fail')->nullable();
             $table->string('laluan_fail')->nullable();
             $table->integer('saiz')->nullable();

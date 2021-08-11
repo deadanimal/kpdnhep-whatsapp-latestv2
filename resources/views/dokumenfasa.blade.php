@@ -1,9 +1,18 @@
 @extends('layouts.main')
 @section('content')
-<h1>Senarai Aduan</h1>
+<h1>Simpanan Dokumen</h1>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Muat naik
 </button>
+@if (count($errors) > 0)
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content animated bounceInRight">
@@ -13,33 +22,30 @@
             <form action="/dokumenfasa" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Nama dokumen</label>
-                        <div class="col-sm-10"><input type="text" class="form-control" name="nama_dok"></div>
+                    <div class="form-group">
+                        <label style="padding-left:0px; text-align: left;" class="col-sm-4 col-form-label">Nama dokumen</label>
+                        <input type="text" class="form-control" name="nama_dok">
                     </div>
-                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Fasa</label>
-                        <div class="col-sm-10"><input type="text" class="form-control" name="fasa"></div>
+                    <div class="form-group">
+                        <label style="padding-left:0px; text-align: left;" class="col-sm-2 col-form-label">Fasa</label>
+                        <select class="form-control m-b" name="fasa">
+                            <option value="Fasa 1">Fasa 1</option>
+                            <option value="Fasa 1">Fasa 2</option>
+                            <option value="Fasa 1">Fasa 3</option>
+                            <option value="Fasa 1">Fasa 4</option>
+                            <option value="Fasa 1">Fasa 5</option>
+                            <option value="Fasa 1">Fasa 6</option>
+                            <option value="Fasa 1">Fasa 7</option>
+                            <option value="Fasa 1">Fasa 8</option>
+                        </select>
                     </div>
-                    @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <strong>{{ $message }}</strong>
+                    <div class="form-group">
+                        <label style="padding-left:0px; text-align: left;"  class="col-sm-2 col-form-label">Catatan</label>
+                        <textarea class="form-control message-input" name="catatan"></textarea>
                     </div>
-                    @endif
-
-                    @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-
-                    <div class="form-group  row"><label class="col-sm-2 col-form-label">Lampiran dokumen</label>
-                        <div class="custom-file">
-                            <input type="file" name="file" class="custom-file-input" id="chooseFile">
-                            <!-- <label class="custom-file-label" for="chooseFile">Select file</label> -->
-                        </div>
+                    <div class="form-group ">
+                        <label style="padding-left:0px; text-align: left;" class="col-sm-2 col-form-label">Lampiran</label>
+                        <input type="file" name="file" class="custom-file-input" id="chooseFile">
                     </div>
                 </div>
                 <div class="modal-footer">

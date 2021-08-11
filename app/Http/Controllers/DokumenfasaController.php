@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokumenfasa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DokumenfasaController extends Controller
 {
@@ -16,8 +17,8 @@ class DokumenfasaController extends Controller
     {
         //
         $dokumenfasas = Dokumenfasa::all();
-        return view('dokumenfasa',[
-            'dokumenfasas'=>$dokumenfasas,
+        return view('dokumenfasa', [
+            'dokumenfasas' => $dokumenfasas,
         ]);
     }
 
@@ -44,34 +45,44 @@ class DokumenfasaController extends Controller
 
         $dokumenfasa->nama_dok = $request->nama_dok;
         $dokumenfasa->fasa = $request->fasa;
+        $dokumenfasa->catatan = $request->catatan;
 
-        if ($dokumenfasa->nama_dok == null) {
-            die("Sila masukkan maklumat yang kosong");
-        } elseif ($dokumenfasa->fasa == null) {
-            die("Sila masukkan maklumat yang kosong");
-        } 
-
-        if($request->file()) {
-            $fileName = time().'_'.$request->file->getClientOriginalName();
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-            
-            $extension = $request->file('file')->extension();
-            $saiz = $request->file('file')->getSize();
-            $saiz = $saiz / 1000;
-// dd($extension);
-            if ($extension != "pdf") {
-                die("Fail hendaklah dalam bentuk pdf");
-            }
 
-            if ($saiz > 2000) {
-                die("Fail tidak boleh melebihi 2mb");
+            $extension = $request->file('file')->extension();
+            if ($extension == "pdf") {
+                $saiz = $request->file('file')->getSize();
+                $saiz = $saiz / 1000;
+
+                if ($saiz > 2000) {
+                    echo "<script>alert('Saiz lampiran tidak boleh melebihi 2mb.');</script>";
+                } else {
+                    $dokumenfasa->saiz = $request->file('file')->getSize();
+                    $dokumenfasa->nama_fail = $request->file->getClientOriginalName();
+                    $dokumenfasa->laluan_fail = '/dokumenfasa/' . $filePath;
+
+                    $rules = [
+                        'nama_dok' => 'required',
+                        'fasa' => 'required',
+                        'catatan' => 'required',
+                    ];
+
+                    $messages = [
+                        'nama_dok.required' => 'Sila isi ruang nama dokumen tersebut',
+                        'catatan.required' => 'Sila berikan catatan untuk dokumen ters',
+                    ];
+
+                    Validator::make($request->input(), $rules, $messages)->validate();
+                    $dokumenfasa->save();
+                }
+            } else {
+                echo "<script>alert('Sila masukkan lampiran berbentuk pdf.');</script>";
             }
-            $dokumenfasa->saiz = $request->file('file')->getSize();
-            $dokumenfasa->nama_fail = $request->file->getClientOriginalName();
-            $dokumenfasa->laluan_fail = '/dokumenfasa/' . $filePath;
-            $dokumenfasa->save();
+        } else {
+            echo "<script>alert('Sila muatnaik dokumen berbentuk pdf dan saiz tidak melebihi 2mb.');</script>";
         }
-        $dokumenfasa->save();
         return redirect('/dokumenfasa/');
     }
 
@@ -84,8 +95,8 @@ class DokumenfasaController extends Controller
     public function show(Dokumenfasa $dokumenfasa)
     {
         //
-        return view('dokumenfasa',[
-            'dokumenfasa'=>$dokumenfasa
+        return view('dokumenfasa', [
+            'dokumenfasa' => $dokumenfasa
         ]);
     }
 
@@ -117,16 +128,16 @@ class DokumenfasaController extends Controller
             die("Sila masukkan maklumat yang kosong");
         } elseif ($dokumenfasa->fasa == null) {
             die("Sila masukkan maklumat yang kosong");
-        } 
-        
-        if($request->file()) {
-            $fileName = time().'_'.$request->file->getClientOriginalName();
+        }
+
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-            
+
             $extension = $request->file('file')->extension();
             $saiz = $request->file('file')->getSize();
             $saiz = $saiz / 1000;
-// dd($extension);
+            // dd($extension);
             if ($extension != "pdf") {
                 die("Fail hendaklah dalam bentuk pdf");
             }
@@ -134,7 +145,7 @@ class DokumenfasaController extends Controller
             if ($saiz > 2000) {
                 die("Fail tidak boleh melebihi 2mb");
             }
-            
+
             $dokumenfasa->saiz = $request->file('file')->getSize();
             $dokumenfasa->nama_fail = $request->file->getClientOriginalName();
             $dokumenfasa->laluan_fail = '/dokumenfasa/' . $filePath;

@@ -52,6 +52,8 @@ Route::resource('dokumenfasa', DokumenfasaController::class);
 
 Route::get('/hantar/{id}', [RoomController::class, 'hantar']);
 
+Route::get('/hantar/{id}', [TugasanController::class, 'hantar']);
+
 Route::get('/terimakerja/{id}', [MesejController::class, 'terimakerja']);
 
 Route::get('/buangkerja/{id}', [MesejController::class, 'buangkerja']);
@@ -62,4 +64,6 @@ Route::post('/simpan_muatnaik', [LaporanhelpdeskController::class, 'simpan_muatn
 
 Route::post('/kemaskini/{id}', [LaporanhelpdeskController::class, 'kemaskini']);
 
-Route::post('/cari', [RoomController::class, 'cari']);
+Route::get('/cari', [RoomController::class, 'cari']);
+
+Route::post('/hantarrr/{id}', [TugasanController::class, 'hantarrr']);
