@@ -177,8 +177,6 @@ class LaporanhelpdeskController extends Controller
         $laporanhelpdesk->keterangan_vendor = $request->keterangan_vendor;
         $laporanhelpdesk->save();
 
-        dd($laporanhelpdesk);
-
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
