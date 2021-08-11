@@ -197,19 +197,19 @@ class LaporanhelpdeskController extends Controller
                     $laporanhelpdesk->laluan_fail = '/laporanhelpdesk/' . $filePath;
                     // $laporanhelpdesk->save();
                 
-                    $rules = [
-                        'isu' => 'required',
-                        'tahap' => 'required',
-                        'keterangan' => 'required',
-                    ];
+                    // $rules = [
+                    //     'isu' => 'required',
+                    //     'tahap' => 'required',
+                    //     'keterangan' => 'required',
+                    // ];
 
-                    $messages = [
-                        'isu.required' => 'Sila masukkan isu yang dilaporkan',
-                        'tahap.rquired' => 'Sila pilih tahap isu tersebut',
-                        'keterangan.required' => 'Sila berikan keterangan mengenai isu tersebut',
-                    ];
+                    // $messages = [
+                    //     'isu.required' => 'Sila masukkan isu yang dilaporkan',
+                    //     'tahap.rquired' => 'Sila pilih tahap isu tersebut',
+                    //     'keterangan.required' => 'Sila berikan keterangan mengenai isu tersebut',
+                    // ];
 
-                    Validator::make($request->input(), $rules, $messages)->validate();
+                    // Validator::make($request->input(), $rules, $messages)->validate();
                     $laporanhelpdesk->save();
                     $recipient = ["najhan.mnajib@gmail.com"];
                     Mail::to($recipient)->send(new Helpdesk());
