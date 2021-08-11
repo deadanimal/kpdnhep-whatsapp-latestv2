@@ -140,4 +140,14 @@ class LaporanbulananController extends Controller
 
         return view('laporanbulanan', compact('tahun', 'laporanbulanans'));
     }
+
+    public function jananik(Request $request){
+        $tahun = $request->tahun;
+        if ($tahun == 2020){
+            return redirect('/jana_2020');
+        }
+        else if($tahun == 2021){
+            return redirect('/jana_2021');
+        }
+    }
 }

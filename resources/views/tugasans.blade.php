@@ -12,7 +12,6 @@
                         <tr>
                             <th>No telefon</th>
                             <th>Nama</th>
-                            <th>Mesej terakhir</th>
                             <th>Tarikh</th>
                             <th></th>
                         </tr>
@@ -23,7 +22,6 @@
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
-                            <td>{{$bilik['last_message']}}</td>
                             <td>{{$bilik['updated_at']}}</td>
                             <td>
                                 <a href="/hantar/{{$bilik['id']}}">

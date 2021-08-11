@@ -5,20 +5,26 @@
     }
 </style>
 @section('content')
-<div class="row">
+<div class="row" style="margin-bottom: 30px;">
     <div class="col-lg-4">
         <a href="/aktif">
-            <button class="btn btn-success btn-block" style="height:120px"><h1>Aktif <i class="fa fa-bell" aria-hidden="true"></i></h1></button>
+            <button class="btn btn-success btn-block" style="height:120px">
+                <h1>Aktif <i class="fa fa-bell" aria-hidden="true"></i></h1>
+            </button>
         </a>
     </div>
     <div class="col-lg-4">
         <a href="/tugasans">
-            <button class="btn btn-success btn-block" style="height:120px"><h1>Tugasan <i class="fa fa-tasks" aria-hidden="true"></i></h1></button>
+            <button class="btn btn-success btn-block" style="height:120px">
+                <h1>Tugasan <i class="fa fa-tasks" aria-hidden="true"></i></h1>
+            </button>
         </a>
     </div>
     <div class="col-lg-4">
         <a href="/room">
-            <button class="btn btn-success btn-block" style="height:120px"><h1>Semua <i class="fa fa-bell" aria-hidden="true"></i></h1></button>
+            <button class="btn btn-success btn-block" style="height:120px">
+                <h1>Semua <i class="fa fa-bell" aria-hidden="true"></i></h1>
+            </button>
         </a>
     </div>
 </div>
@@ -99,14 +105,26 @@
     </div>
     <div class="col-lg-4">
 
-        <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{$room['name']}} - {{$room['phone']}}</h5>
-            <p class="card-text">Status bot: {{$room['active']}}</p>
-            <a href="/room/{{$room['id']}}/aktif" class="btn btn-primary">Aktifkan Bot?</a>
-            <a href="/room/{{$room['id']}}/aktif" class="btn btn-danger">Nyahaktifkan Bot?</a>
+        <div class="ibox">
+            <div class="ibox-content text-center">
+                <h1>{{$room['name']}}</h1>
+                <h3>{{$room['phone']}}</h3>
+                <p class="card-text">Status bot:
+                    @if ($room['active'] == 1)
+                    Aktif
+                    @else
+                    Tidak aktif
+                    @endif
+                </p>
+                @if ($room['active'] == 1)
+                <a href="/room/{{$room['id']}}/aktif" class="btn btn-danger">Nyahaktifkan Bot?</a>
+                @else
+                <a href="/room/{{$room['id']}}/aktif" class="btn btn-primary">Aktifkan Bot?</a>
+                @endif
+
+
+            </div>
         </div>
-        </div>    
 
     </div>
 </div>

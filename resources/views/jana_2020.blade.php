@@ -15,14 +15,15 @@
         <div class="ibox">
             <div class="ibox-content">
                 <div class="form-group row">
-                    <form action="/jana" method="POST">
+                    <form action="/jananik" method="POST">
                         @csrf
                         <div class="col-lg-2">
                             <label class=" col-form-label">Pilih Tahun</label>
                         </div>
                         <div class="col-lg-8">
                             <select class="form-control m-b" name="tahun">
-                                <option value="2020">2020</option>
+                                <option value="1">Sila pilih tahun</option>
+                                <option value="2020" selected>2020</option>
                                 <option value="2021">2021</option>
                             </select>
                         </div>
@@ -36,52 +37,67 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col">
-        <div class="ibox-content">
-            <div class="row">
-                <div class="col-lg-10">
-                </div>
-                <div class="col-lg-2">
-                    <div class="html5buttons">
-                        <div class="dt-buttons btn-group flex-wrap">
-                            <button class="btn btn-white btn-sm buttons-csv buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button">
-                                <span>CSV</span>
-                            </button>
-                            <button class="btn btn-white btn-sm buttons-excel buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button">
-                                <span>Excel</span>
-                            </button>
-                            <button class="btn btn-white btn-sm buttons-pdf buttons-html5" tabindex="0" aria-controls="DataTables_Table_0" type="button">
-                                <span>PDF</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <!-- @foreach ($laporanbulanans as $laporanbulanan) -->
-                        
-                        <!-- <th></th> -->
-                        <!-- @endforeach -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- @foreach ($laporanbulanans as $laporanbulanan) -->
-                    <tr>
-                        <td>{{$laporanbulanans->agensi[0]}}</td>
-                        <!-- <td>{{$laporanbulanan->nama}}</td>
-                        <td>{{$laporanbulanan->bulan}}</td> -->
-                    </tr>
-                    <!-- @endforeach -->
-                </tbody>
-            </table>
+<h3>2020 Laporan Bulanan</h3>
 
-
-        </div>
+<div class="ibox">
+    <div class="ibox-content">
+        <table id="example" class="display nowrap" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Kategori</th>
+                    <th>Jan</th>
+                    <th>Feb</th>
+                    <th>Mac</th>
+                    <th>April</th>
+                    <th>Mei</th>
+                    <th>Jun</th>
+                    <th>Jul</th>
+                    <th>Ogos</th>
+                    <th>Sept</th>
+                    <th>Okt</th>
+                    <th>Nov</th>
+                    <th>Dis</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Agensi kpdnhep</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
-
 @stop
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
