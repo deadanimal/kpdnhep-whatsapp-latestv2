@@ -175,6 +175,9 @@ class LaporanhelpdeskController extends Controller
         $laporanhelpdesk->keterangan = $request->keterangan;
         $laporanhelpdesk->status = "Baru";
         $laporanhelpdesk->keterangan_vendor = $request->keterangan_vendor;
+        $laporanhelpdesk->save();
+
+        dd($laporanhelpdesk);
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
@@ -195,7 +198,7 @@ class LaporanhelpdeskController extends Controller
                     $laporanhelpdesk->saiz = $saiz;
                     $laporanhelpdesk->nama_fail = time() . '_' . $request->file->getClientOriginalName();
                     $laporanhelpdesk->laluan_fail = '0';
-                    // $laporanhelpdesk->save();
+                    $laporanhelpdesk->save();
                 
                     // $rules = [
                     //     'isu' => 'required',
@@ -212,7 +215,6 @@ class LaporanhelpdeskController extends Controller
                     // Validator::make($request->input(), $rules, $messages)->validate();
                     
                     $laporanhelpdesk->save();
-                    dd($laporanhelpdesk);
     
                     $recipient = ["najhan.mnajib@gmail.com"];
                     Mail::to($recipient)->send(new Helpdesk());
