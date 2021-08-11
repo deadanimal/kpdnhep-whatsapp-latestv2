@@ -8,8 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Tugasan extends Model
 {
     use HasFactory;
-    public function Rooms()
-    {
-        return $this->belongsTo(Room::class);
-    }
 }
