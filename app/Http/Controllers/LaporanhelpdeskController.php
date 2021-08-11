@@ -181,8 +181,6 @@ class LaporanhelpdeskController extends Controller
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
             $extension = $request->file('file')->getClientOriginalExtension();
 
-            dd('ok');
-
             if ($extension == "pdf") {
                 $saiz = $request->file('file')->getSize();
                 if($saiz) {
@@ -198,6 +196,8 @@ class LaporanhelpdeskController extends Controller
                     $laporanhelpdesk->nama_fail = time() . '_' . $request->file->getClientOriginalName();
                     $laporanhelpdesk->laluan_fail = '/laporanhelpdesk/' . $filePath;
                     // $laporanhelpdesk->save();
+
+                    dd('lapoer');
                     $rules = [
                         'isu' => 'required',
                         'tahap' => 'required',
