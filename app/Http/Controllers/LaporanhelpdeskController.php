@@ -67,7 +67,7 @@ class LaporanhelpdeskController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
 
             $saiz = $request->file('file')->getSize();
             $saiz = $saiz / 1000;
@@ -134,7 +134,7 @@ class LaporanhelpdeskController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
 
             $saiz = $request->file('file')->getSize();
             $saiz = $saiz / 1000;
@@ -179,7 +179,7 @@ class LaporanhelpdeskController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
             $extension = $request->file('file')->getClientOriginalExtension();
 
             if ($extension == "pdf") {

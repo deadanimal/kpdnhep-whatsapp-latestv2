@@ -54,7 +54,7 @@ class DokumenfasaController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
             $extension = $request->file('file')->getClientOriginalExtension();
             
             if ($extension == "pdf") {
@@ -140,7 +140,7 @@ class DokumenfasaController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
 
             $extension = $request->file('file')->extension();
             $saiz = $request->file('file')->getSize();
