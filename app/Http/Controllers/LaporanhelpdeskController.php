@@ -180,7 +180,6 @@ class LaporanhelpdeskController extends Controller
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-            dd($filePath);
             $extension = $request->file('file')->getClientOriginalExtension();
 
             if ($extension == "pdf") {
