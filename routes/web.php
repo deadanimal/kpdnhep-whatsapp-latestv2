@@ -21,6 +21,14 @@ Route::get('/sm', function () {
     return view('sm');
 });
 
+Route::get('/jana_2020', function () {
+    return view('jana_2020');
+});
+
+Route::get('/jana_2021', function () {
+    return view('jana_2021');
+});
+
 use App\Http\Controllers\RoomController;
 Route::get('/room/{room}/aktif', [RoomController::class, 'aktif_bot']);
 Route::post('/room/{room}/officer', [RoomController::class, 'add_officer']);
@@ -47,6 +55,9 @@ Route::resource('dokumenfasa', DokumenfasaController::class);
 
 use App\Http\Controllers\AktifController;
 Route::resource('aktif', AktifController::class);
+
+use App\Http\Controllers\LaporanpegawaiController;
+Route::resource('laporanpegawai', LaporanpegawaiController::class);
 
 
 // use App\Http\Controllers\RoomController;
@@ -75,4 +86,4 @@ Route::post('/cari', [RoomController::class, 'cari']);
 
 Route::post('/hantarrr/{id}', [TugasanController::class, 'hantarrr']);
 
-Route::post('/jana', [LaporanbulananController::class, 'jana']);
+Route::post('/jananik', [LaporanbulananController::class, 'jananik']);
