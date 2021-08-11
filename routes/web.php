@@ -44,6 +44,9 @@ Route::resource('laporanhelpdesk', LaporanhelpdeskController::class);
 use App\Http\Controllers\DokumenfasaController;
 Route::resource('dokumenfasa', DokumenfasaController::class);
 
+use App\Http\Controllers\AktifController;
+Route::resource('aktif', AktifController::class);
+
 
 // use App\Http\Controllers\RoomController;
 // Route::resource('room', RoomController::class);
@@ -54,6 +57,8 @@ Route::resource('dokumenfasa', DokumenfasaController::class);
 Route::get('/hantar/{id}', [RoomController::class, 'hantar']);
 
 Route::get('/hantar/{id}', [TugasanController::class, 'hantar']);
+
+Route::get('/hantaraktif/{id}', [AktifController::class, 'hantaraktif']);
 
 Route::get('/terimakerja/{id}', [MesejController::class, 'terimakerja']);
 

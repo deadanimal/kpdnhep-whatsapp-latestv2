@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group ">
                         <label style="padding-left:0px; text-align: left;" class="col-sm-2 col-form-label">Lampiran</label>
-                        <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                        <input type="file" name="dokumen" class="custom-file-input" id="chooseFile">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -86,10 +86,10 @@
                             <td>{{$laporanhelpdesk->status}}</td>
                             <td>{{$laporanhelpdesk->keterangan_vendor}}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kemaskini">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kemaskini-{{$laporanhelpdesk->id}}">
                                     Kemaskini
                                 </button>
-                                <div class="modal inmodal" id="kemaskini" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal inmodal" id="kemaskini-{{$laporanhelpdesk->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content animated bounceInRight">
                                             <div class="modal-header">
@@ -119,11 +119,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <td>
-                                <a href="{{$laporanhelpdesk->laluan_fail}}" download>
+                                <a href="http://blockchain-launcher.sgp1.digitaloceanspaces.com/{{$laporanhelpdesk->laluan_fail}}" download>
                                     <button class="btn btn-success"><i class="fa fa-download" aria-hidden="true"></i></button>
                                 </a>
-                            </td>
                             </td>
                         </tr>
                         @endforeach

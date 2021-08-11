@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokumenfasa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class DokumenfasaController extends Controller
@@ -54,7 +55,7 @@ class DokumenfasaController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
+            $filePath = Storage::putFile('najhan', $request->file('file'), 'public');#$request->file('file')->storeAs('najhan', $fileName, 'public');
             $extension = $request->file('file')->getClientOriginalExtension();
             
             if ($extension == "pdf") {
@@ -140,7 +141,7 @@ class DokumenfasaController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
+            $filePath = Storage::putFile('najhan', $request->file('file'), 'public');#$filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
 
             $extension = $request->file('file')->extension();
             $saiz = $request->file('file')->getSize();

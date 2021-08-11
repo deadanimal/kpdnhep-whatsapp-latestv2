@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Laporanhelpdesk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Support\Facades\Mail;
@@ -67,7 +68,7 @@ class LaporanhelpdeskController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
+            $filePath = Storage::putFile('najhan', $request->file('file'), 'public');#$filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
 
             $saiz = $request->file('file')->getSize();
             $saiz = $saiz / 1000;
@@ -134,7 +135,7 @@ class LaporanhelpdeskController extends Controller
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
+            $filePath = Storage::putFile('najhan', $request->file('file'), 'public');#$filePath = $request->file('file')->najhan', $fileName, 'public');
 
             $saiz = $request->file('file')->getSize();
             $saiz = $saiz / 1000;
@@ -163,7 +164,7 @@ class LaporanhelpdeskController extends Controller
 
     public function simpan_muatnaik(Request $request)
     {        
-        $extension = $request->file('file')->getClientOriginalExtension();
+        $extension = $request->file('dokumen')->getClientOriginalExtension();
         if ($extension != "pdf") {
             return redirect('/laporanhelpdesk')->withErrors('Sila masukkan lampiran berbentuk pdf.');
         }
@@ -178,12 +179,12 @@ class LaporanhelpdeskController extends Controller
         $laporanhelpdesk->save();
 
         if ($request->file()) {
-            $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('najhan', $fileName, 'public');
-            $extension = $request->file('file')->getClientOriginalExtension();
+            $fileName = time() . '_' . $request->file('dokumen')->getClientOriginalName();
+            $filePath = Storage::putFile('najhan', $request->file('dokumen'), 'public');#$filePath = $request->file('dokumen')->storeAs('najhan', $fileName, 'public');
+            $extension = $request->file('dokumen')->getClientOriginalExtension();
 
             if ($extension == "pdf") {
-                $saiz = $request->file('file')->getSize();
+                $saiz = $request->file('dokumen')->getSize();
                 if($saiz) {
                     $saiz = $saiz / 1000;
                 } else {
@@ -194,8 +195,8 @@ class LaporanhelpdeskController extends Controller
                 } else {
                     $laporanhelpdesk->bentuk = $extension;
                     $laporanhelpdesk->saiz = $saiz;
-                    $laporanhelpdesk->nama_fail = time() . '_' . $request->file->getClientOriginalName();
-                    $laporanhelpdesk->laluan_fail = '0';
+                    $laporanhelpdesk->nama_fail = time() . '_' . $request->file('dokumen')->getClientOriginalName();
+                    $laporanhelpdesk->laluan_fail = $filePath;
                     $laporanhelpdesk->save();
                 
                     // $rules = [
@@ -214,7 +215,7 @@ class LaporanhelpdeskController extends Controller
                     
                     $laporanhelpdesk->save();
     
-                    $recipient = ["najhan.mnajib@gmail.com"];
+                    $recipient = ["harizhasani@pipeline-network.com"];
                     Mail::to($recipient)->send(new Helpdesk());
                     return redirect('/laporanhelpdesk/');
                 }

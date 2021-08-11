@@ -23,7 +23,7 @@ class AktifController extends Controller
         $biliks = json_decode($biliks, TRUE)['rooms'];
         // dd($response['rooms']);
 
-        return view('room', [
+        return view('aktif', [
             'biliks' => $biliks
         ]);
     }
@@ -92,5 +92,20 @@ class AktifController extends Controller
     public function destroy(Aktif $aktif)
     {
         //
+    }
+
+    public function hantaraktif($id)
+    {
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
+        $response = Http::get($url);
+        $mesejs = $response->json();
+        $try = json_encode($mesejs);
+        $mesejs = json_decode($try, TRUE)['messages'];
+        $rooms = json_decode($try, TRUE)['room'];
+
+        return view('mesejaktif', [
+            'mesejs' => $mesejs,
+            'rooms' => $rooms
+        ]);
     }
 }
