@@ -130,7 +130,7 @@ class RoomController extends Controller
 
     public function aktif_bot($room_id)
     {
-        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/".$room_id;
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/".$room_id."/activate";
         $response = Http::get($url);
 
         if ($response->successful()) {
