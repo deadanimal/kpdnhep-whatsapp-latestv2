@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Room;
-use App\Models\Mesej;
+use App\Models\Aktif;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use phpDocumentor\Reflection\PseudoTypes\True_;
 
-class RoomController extends Controller
+class AktifController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +22,8 @@ class RoomController extends Controller
         $biliks = json_encode($biliks);
         $biliks = json_decode($biliks, TRUE)['rooms'];
         // dd($response['rooms']);
-        $rooms = Room::all();
 
         return view('room', [
-            'rooms' => $rooms,
             'biliks' => $biliks
         ]);
     }
@@ -56,24 +52,21 @@ class RoomController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Room  $room
+     * @param  \App\Models\Aktif  $aktif
      * @return \Illuminate\Http\Response
      */
-    public function show(Room $room)
+    public function show(Aktif $aktif)
     {
         //
-        return view('room', [
-            'room' => $room
-        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Room  $room
+     * @param  \App\Models\Aktif  $aktif
      * @return \Illuminate\Http\Response
      */
-    public function edit(Room $room)
+    public function edit(Aktif $aktif)
     {
         //
     }
@@ -82,10 +75,10 @@ class RoomController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Room  $room
+     * @param  \App\Models\Aktif  $aktif
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request, Aktif $aktif)
     {
         //
     }
@@ -93,36 +86,11 @@ class RoomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Room  $room
+     * @param  \App\Models\Aktif  $aktif
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room)
+    public function destroy(Aktif $aktif)
     {
         //
-    }
-    public function hantar($id)
-    {
-        $mesejs = Mesej::all();
-        $room_selected = Room::where("id", $id)->first();
-
-        return view('mesej', [
-            'mesejs' => $mesejs,
-            'room_selected' => $room_selected,
-        ]);
-    }
-
-    public function cari(Request $request)
-    {
-        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
-        $response = Http::where([
-            ['name', '=', $request->name]
-        ])->get($url);
-        $biliks = $response->json();
-        $biliks = json_encode($biliks);
-        $biliks = json_decode($biliks, TRUE)['rooms'];
-
-        return view('room', [
-            'biliks' => $biliks,
-        ]);
     }
 }
