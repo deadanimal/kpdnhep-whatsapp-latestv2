@@ -186,7 +186,7 @@ class LaporanhelpdeskController extends Controller
                 if($saiz) {
                     $saiz = $saiz / 1000;
                 } else {
-                    $saiz = rand(500,2000);
+                    $saiz = rand(500,1999);
                 }
                 if ($saiz > 2000) {
                     echo "<script>alert('Saiz lampiran tidak boleh melebihi 2mb.');</script>";
@@ -212,7 +212,8 @@ class LaporanhelpdeskController extends Controller
                     // Validator::make($request->input(), $rules, $messages)->validate();
                     
                     $laporanhelpdesk->save();
-                    dd('ko');
+                    dd($laporanhelpdesk);
+    
                     $recipient = ["najhan.mnajib@gmail.com"];
                     Mail::to($recipient)->send(new Helpdesk());
                     return redirect('/laporanhelpdesk/');
