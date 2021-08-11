@@ -194,7 +194,7 @@ class LaporanhelpdeskController extends Controller
                     $laporanhelpdesk->bentuk = $extension;
                     $laporanhelpdesk->saiz = $saiz;
                     $laporanhelpdesk->nama_fail = time() . '_' . $request->file->getClientOriginalName();
-                    $laporanhelpdesk->laluan_fail = '/laporanhelpdesk/' . $filePath;
+                    $laporanhelpdesk->laluan_fail = '0';
                     // $laporanhelpdesk->save();
                 
                     // $rules = [
