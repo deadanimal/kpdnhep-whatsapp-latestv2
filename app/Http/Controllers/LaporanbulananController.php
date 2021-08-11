@@ -149,5 +149,8 @@ class LaporanbulananController extends Controller
         else if($tahun == 2021){
             return redirect('/jana_2021');
         }
+        else{
+            return redirect('/laporanbulanan');
+        }
     }
 }

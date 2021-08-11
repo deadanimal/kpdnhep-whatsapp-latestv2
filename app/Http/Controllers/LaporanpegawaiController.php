@@ -15,8 +15,8 @@ class LaporanpegawaiController extends Controller
     public function index()
     {
         //
-        $start = 1;
-        $end = 2;
+        $start = null;
+        $end = null;
         return view('/laporanpegawai',[
             'start'=>$start,
             'end'=>$end
