@@ -67,6 +67,7 @@
                             <th>Nama dokumen</th>
                             <th>Fasa</th>
                             <th>Lampiran</th>
+                            <th>Catatan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,6 +76,7 @@
                             <td>{{$dokumenfasa->nama_dok}}</td>
                             <td>{{$dokumenfasa->fasa}}</td>
                             <td>{{$dokumenfasa->nama_fail}}</td>
+                            <td>{{$dokumenfasa->catatan}}</td>
                         </tr>
                         @endforeach
                     </tbody>

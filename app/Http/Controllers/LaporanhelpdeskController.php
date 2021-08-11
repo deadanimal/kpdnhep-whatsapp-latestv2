@@ -228,7 +228,7 @@ class LaporanhelpdeskController extends Controller
         $status = $request->status;
         $keterangan_vendor = $request->keterangan_vendor;
         $selectedlaporan = Laporanhelpdesk::find($id);
-dd($id);
+// dd($id);
         $selectedlaporan->status = $status;
         $selectedlaporan->keterangan_vendor = $keterangan_vendor;
         $rules = [
