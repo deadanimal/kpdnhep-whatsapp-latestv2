@@ -196,8 +196,7 @@ class LaporanhelpdeskController extends Controller
                     $laporanhelpdesk->nama_fail = time() . '_' . $request->file->getClientOriginalName();
                     $laporanhelpdesk->laluan_fail = '/laporanhelpdesk/' . $filePath;
                     // $laporanhelpdesk->save();
-
-                    dd('lapoer');
+                
                     $rules = [
                         'isu' => 'required',
                         'tahap' => 'required',
