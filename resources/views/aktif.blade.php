@@ -42,13 +42,18 @@
                     </thead>
                     <tbody>
                         @foreach($biliks as $bilik)
-                        @if(!$bilik['active'])
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
-                            <td>{{$bilik['updated_at']}}</td>                            
+                            <td>{{$bilik['updated_at']}}</td>
                             <td>{{$bilik['created_at']}}</td>
-                            <td>{{$bilik['officer_name']}}</td>
+                            <td>
+                                @if($bilik['officer_name'] != "Najhan")
+                                Tiada
+                                @else
+                                {{$bilik['officer_name']}}
+                                @endif
+                            </td>
                             <!-- <td>
                                 @if($bilik['active']) 
                                     Ya <a href="/room/{{$bilik['id']}}/aktif">Nyahaktif bot?</a>
@@ -63,7 +68,6 @@
 
                             </td>
                         </tr>
-                        @endif
                         @endforeach
                     </tbody>
                 </table>
