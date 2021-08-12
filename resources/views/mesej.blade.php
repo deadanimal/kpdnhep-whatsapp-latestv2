@@ -120,7 +120,7 @@
                 @endif
             </div>
 
-            @if ($mesejs['media_url'] != null)
+            <!-- @if ($mesejs['media_url'] != null)
             <div class="ibox-content">
                 <div class="h5">
                     Perkongsian Multimedia<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
@@ -131,7 +131,7 @@
                     </li>
                 </ul>
             </div>
-            @endif
+            @endif -->
         </div>
 
     </div>
