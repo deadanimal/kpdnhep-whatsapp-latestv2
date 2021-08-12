@@ -69,12 +69,12 @@
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
-                            <td>{{$bilik['updated_at']}}</td>
+                            <td>{{date('d-m-Y h:m:s', strtotime($bilik['updated_at']))}}</td>
                             <td>
                                 @if($bilik['active']) 
-                                    Ya <a href="/room/{{$bilik['id']}}/aktif">Nyahaktif bot?</a>
+                                    Ya | <a href="/room/{{$bilik['id']}}/aktif">Nyahaktif bot?</a>
                                 @else
-                                    Tidak <a href="/room/{{$bilik['id']}}/aktif">Aktifkan bot?</a>
+                                    Tidak | <a href="/room/{{$bilik['id']}}/aktif">Aktifkan bot?</a>
                                 @endif
                             </td>
                         </tr>

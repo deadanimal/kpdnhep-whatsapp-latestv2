@@ -45,8 +45,8 @@
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
-                            <td>{{$bilik['updated_at']}}</td>
-                            <td>{{$bilik['created_at']}}</td>
+                            <td>{{ date('d-m-Y h:m:s', strtotime($bilik['updated_at'])) }}</td>
+                            <td>{{ date('d-m-Y h:m:s', strtotime($bilik['created_at'])) }}</td>
                             <td>
                                 @if($bilik['officer_name'] != "Najhan")
                                 Tiada

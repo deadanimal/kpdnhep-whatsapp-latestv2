@@ -47,7 +47,7 @@
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
-                            <td>{{$bilik['updated_at']}}</td>
+                            <td>{{date('d-m-Y h:m:s', strtotime($bilik['updated_at']))}}</td>
                             <td>
                                 <a href="/hantar/{{$bilik['id']}}">
                                     <button class="btn btn-success">Kemaskini maklumbalas</button>
