@@ -115,10 +115,25 @@ class RoomController extends Controller
     {
         $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
         $phone = $request->phone;
-        $response = Http::post($url, [
-            "phone" => $phone
-        ]);
-
+        $name = $request->name;
+        $officer_name = $request->officer_name;
+        // dd($name, $phone);
+        if ( $phone != null && $name == null && $officer_name == null) {
+            $response = Http::post($url, [
+                "phone" => $phone,
+            ]);
+            dd($response);
+        } else if($phone == null && $name != null && $officer_name == null ) {
+            $response = Http::post($url, [
+                "name" => $name
+            ]);
+        }else if($phone == null && $name == null && $officer_name != null ) {
+            $response = Http::post($url, [
+                "officer_name" => $officer_name
+            ]);
+        }else{
+            return redirect('/room');
+        }
         $biliks = $response->json();
         $biliks = json_encode($biliks);
         $biliks = json_decode($biliks, TRUE)['rooms'];
@@ -130,41 +145,41 @@ class RoomController extends Controller
 
     public function aktif_bot($room_id)
     {
-        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/".$room_id."/activate";
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/" . $room_id . "/activate";
         $response = Http::get($url);
 
         if ($response->successful()) {
             return redirect('/room');
         } else {
             return redirect('/room')->withErrors('Tak dapat');
-        }  
+        }
     }
 
     public function add_officer($room_id, Request $request)
     {
-        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/".$room_id."/officer";
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/" . $room_id . "/officer";
         $response = Http::post($url, [
-            "officer_name"=>'Najhan'#$request->officer_name
+            "officer_name" => 'Najhan' #$request->officer_name
         ]);
 
         if ($response->successful()) {
             return redirect('/aktif');
         } else {
             return redirect('/aktif')->withErrors('Tak dapat');
-        }  
-    }   
-    
+        }
+    }
+
     public function buang_officer($room_id, Request $request)
     {
-        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/".$room_id."/officer";
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/" . $room_id . "/officer";
         $response = Http::post($url, [
-            "officer_name"=> "Tiada" #$request->officer_name
+            "officer_name" => "Tiada" #$request->officer_name
         ]);
 
         if ($response->successful()) {
             return redirect('/aktif');
         } else {
             return redirect('/aktif')->withErrors('Tak dapat');
-        }  
+        }
     }
 }

@@ -57,26 +57,52 @@
                     <th>Okt</th>
                     <th>Nov</th>
                     <th>Dis</th>
-                    <th>Jumlah</th>
-                    <th>Peratusan (%)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Agensi kpdnhep</td>
+                    <td>447</td>
+                    <td>254</td>
+                    <td>247</td>
+                    <td>323</td>
+                    <td>247</td>
+                    <td>200</td>
+                    <td>204</td>
+                    <td>216</td>
+                    <td>184</td>
+                    <td>193</td>
+                    <td>152</td>
+                    <td>115</td>
+                </tr>
+                <tr>
+                    <td>BNM</td>
+                    <td>15</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>11</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td>10</td>
+                    <td>1</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>2</td>
                     <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>CFM</td>
+                    <td>15</td>
+                    <td>9</td>
+                    <td>8</td>
+                    <td>11</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td>10</td>
+                    <td>1</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>2</td>
                     <td>0</td>
                 </tr>
             </tbody>

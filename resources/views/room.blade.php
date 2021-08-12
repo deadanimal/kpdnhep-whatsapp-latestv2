@@ -40,6 +40,12 @@
                             <input type="text" placeholder="No telefon" class="form-control" name="phone">
                         </div>
                         <div class="col-lg-2">
+                            <input type="text" placeholder="Nama" class="form-control" name="name">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" placeholder="Nama Pegawai" class="form-control" name="officer_name">
+                        </div>
+                        <div class="col-lg-2">
                             <button type="submit" class="btn btn-w-m btn-success">Cari</button>
                         </div>
                     </form>
@@ -60,6 +66,7 @@
                             <th>No telefon</th>
                             <th>Nama</th>
                             <th>Tarikh</th>
+                            <th>Nama Pegawai</th>
                             <th>Bot aktif</th>
                         </tr>
                     </thead>
@@ -70,6 +77,13 @@
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
                             <td>{{date('d-m-Y h:m:s', strtotime($bilik['updated_at']))}}</td>
+                            <td>
+                                @if($bilik['officer_name'] == "Najhan")
+                            {{$bilik['officer_name']}}
+                            @else
+                            Tiada
+                            @endif
+                        </td>
                             <td>
                                 @if($bilik['active']) 
                                     Ya | <a href="/room/{{$bilik['id']}}/aktif">Nyahaktif bot?</a>
