@@ -76,6 +76,14 @@
                 <button type="submit" class="btn btn-danger">Buang tugas</button>
                 
             </form>
+            @else
+            <form action="/room/{{$rooms['id']}}/officer" method="POST">
+                @csrf
+                <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                <button type="submit" class="btn btn-primary">Tambah tugas</button>
+                
+            </form>
             @endif
         </div>
 
