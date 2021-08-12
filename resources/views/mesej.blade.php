@@ -94,6 +94,7 @@
                 </div> -->
                 <textarea class="form-control message-input my-3" id="chatbox" name="hantar" placeholder="Enter message text"></textarea>
                 <button class="btn btn-primary" type="submit">Hantar</button>
+                
 
             </form>
         </div>

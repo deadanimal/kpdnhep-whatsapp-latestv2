@@ -10,7 +10,7 @@
         <div class="ibox">
             <div class="ibox-content">
                 <div class="form-group row">
-                    <form action="/jananik" method="POST">
+                    <form action="/hantaq" method="POST">
                         @csrf
                         <div class="col-lg-2">
                             <label class=" col-form-label">Pilih tarikh</label>
