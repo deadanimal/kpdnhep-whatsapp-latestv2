@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                         @foreach($biliks as $bilik)
-
+                        @if ($bilik['officer_name'] == "Najhan")
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>
@@ -54,6 +54,7 @@
                                 </a>
                             </td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>
