@@ -152,5 +152,19 @@ class RoomController extends Controller
         } else {
             return redirect('/aktif')->withErrors('Tak dapat');
         }  
-    }    
+    }   
+    
+    public function buang_officer($room_id, Request $request)
+    {
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/".$room_id."/officer";
+        $response = Http::post($url, [
+            "officer_name"=> "Tiada" #$request->officer_name
+        ]);
+
+        if ($response->successful()) {
+            return redirect('/aktif');
+        } else {
+            return redirect('/aktif')->withErrors('Tak dapat');
+        }  
+    }
 }

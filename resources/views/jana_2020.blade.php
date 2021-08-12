@@ -41,7 +41,7 @@
 
 <div class="ibox">
     <div class="ibox-content">
-        <table id="example" class="display nowrap" style="width:100%">
+        <table id="example" class="display nowrap" style="width:50%">
             <thead>
                 <tr>
                     <th>Kategori</th>
@@ -57,11 +57,15 @@
                     <th>Okt</th>
                     <th>Nov</th>
                     <th>Dis</th>
+                    <th>Jumlah</th>
+                    <th>Peratusan (%)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Agensi kpdnhep</td>
+                    <td>0</td>
+                    <td>0</td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>

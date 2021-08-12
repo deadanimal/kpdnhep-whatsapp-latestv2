@@ -32,6 +32,7 @@ Route::get('/jana_2021', function () {
 use App\Http\Controllers\RoomController;
 Route::get('/room/{room}/aktif', [RoomController::class, 'aktif_bot']);
 Route::post('/room/{room}/officer', [RoomController::class, 'add_officer']);
+Route::post('/room/{room}/officer_buang', [RoomController::class, 'buang_officer']);
 Route::resource('room', RoomController::class);
 
 use App\Http\Controllers\MesejController;

@@ -60,11 +60,23 @@
         </div>
 
         <div class="form-group text-right">
+            @if ($rooms['officer_name'] == "Tiada")
             <form action="/room/{{$rooms['id']}}/officer" method="POST">
                 @csrf
                 <a href="/aktif" class="btn btn-success">Kembali</a>
-                <button type="submit" class="btn btn-primary">Tambang tugas</button>
+
+                <button type="submit" class="btn btn-primary">Tambah tugas</button>
+                
             </form>
+            @elseif ($rooms['officer_name'] == "Najhan")
+            <form action="/room/{{$rooms['id']}}/officer_buang" method="POST">
+                @csrf
+                <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                <button type="submit" class="btn btn-danger">Buang tugas</button>
+                
+            </form>
+            @endif
         </div>
 
     </div>
