@@ -50,7 +50,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>A. Johan bin Ag Othman</td>
+                    <td>A. Johan Bin Ag Othman</td>
                     <td>0</td>
                     <td>2</td>
                     <td>2</td>
@@ -58,6 +58,41 @@
                 </tr>
                 <tr>
                     <td>Abd. Aziz Bin Slamin</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Adibah Binti Jalaluddin</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Afidah Binti Asmat</td>
+                    <td>0</td>
+                    <td>320</td>
+                    <td>320</td>
+                    <td>8.23</td>
+                </tr>
+                <tr>
+                    <td>Ahmad Afiq Bin Ahmad Radzi</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0.05</td>
+                </tr>
+                <tr>
+                    <td>Ahmad Khuzairi Bin Salamat</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Al-nurhisyam Bin Ahamad</td>
                     <td>0</td>
                     <td>2</td>
                     <td>2</td>
