@@ -98,7 +98,149 @@
                     <td>2</td>
                     <td>0.05</td>
                 </tr>
+                <tr>
+                    <td>Muhammad Syahir Husin Bin Haji Rusfan</td>
+                    <td>0</td>
+                    <td>728</td>
+                    <td>728</td>
+                    <td>18.61</td>
+                </tr>
+                <tr>
+                    <td>Ngelingkong Anak Kusa</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Norafida Binti Bulat</td>
+                    <td>0</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>0.08</td>
+                </tr>
+                <tr>
+                    <td>Norazlina Binti Yaakob</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Nur Awanis Binti Katabe</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Sakima Binti Shaharudin</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Sayed Mohd Nizam Bin Sayed Zahari</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0.05</td>
+                </tr>
+                <tr>
+                    <td>Suriana Binti Isa</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Syazana Masturah Binti Othman</td>
+                    <td>0</td>
+                    <td>143</td>
+                    <td>143</td>
+                    <td>3.66</td>
+                </tr>
+                <tr>
+                    <td>Tuan Mohd Asyraf Bin Tuan Loseng</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Uppk3-mohamed Farhan Bin Mohamed Shafiee</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Uppk4-ruslan Bin Shamsudin</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Wan Asrul Effendi Bin Wan Mahmood</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0.05</td>
+                </tr>
+                <tr>
+                    <td>Zainal Abidin Bin Ahmad</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
+                <tr>
+                    <td>Zaini Bin Zamri</td>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0.05</td>
+                </tr>
+                <tr>
+                    <td>Zareena Binti Radin @ Saradin</td>
+                    <td>0</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td>0.15</td>
+                </tr>
+                <tr>
+                    <td>Zulfitri A'zim Bin Zohari</td>
+                    <td>0</td>
+                    <td>577</td>
+                    <td>577</td>
+                    <td>14.75</td>
+                </tr>
+                <tr>
+                    <td>Zulia Binti Mat Yusof</td>
+                    <td>0</td>
+                    <td>4</td>
+                    <td>4</td>
+                    <td>0.10</td>
+                </tr>
+                <tr>
+                    <td>Zuraini Binti Yusoff</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0.03</td>
+                </tr>
             </tbody>
+            <tfoot>
+            <tr>
+                <th>Jumlah</th>
+                <th>0</th>
+                <th>3912</th>
+                <th>3912</th>
+                <th>100.00</th>
+            </tr>
+        </tfoot>
         </table>
     </div>
 </div>
