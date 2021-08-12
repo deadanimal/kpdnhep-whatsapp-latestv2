@@ -84,6 +84,8 @@ Route::post('/simpan_muatnaik', [LaporanhelpdeskController::class, 'simpan_muatn
 Route::post('/kemaskini/{id}', [LaporanhelpdeskController::class, 'kemaskini']);
 
 Route::post('/cari', [RoomController::class, 'cari']);
+Route::post('/caritugasan', [TugasanController::class, 'caritugasan']);
+Route::post('/cariaktif', [AktifController::class, 'cariaktif']);
 
 Route::post('/hantarrr/{id}', [TugasanController::class, 'hantarrr']);
 

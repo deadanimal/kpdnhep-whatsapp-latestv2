@@ -137,4 +137,34 @@ class TugasanController extends Controller
             'room' => $room
         ]);
     }
+    public function caritugasan(Request $request)
+    {
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
+        $phone = $request->phone;
+        $name = $request->name;
+        $officer_name = $request->officer_name;
+        // dd($name, $phone);
+        if ( $phone != null && $name == null && $officer_name == null) {
+            $response = Http::post($url, [
+                "phone" => $phone,
+            ]);
+        } else if($phone == null && $name != null && $officer_name == null ) {
+            $response = Http::post($url, [
+                "name" => $name
+            ]);
+        }else if($phone == null && $name == null && $officer_name != null ) {
+            $response = Http::post($url, [
+                "officer_name" => $officer_name
+            ]);
+        }else{
+            return redirect('/tugasans');
+        }
+        $biliks = $response->json();
+        $biliks = json_encode($biliks);
+        $biliks = json_decode($biliks, TRUE)['rooms'];
+
+        return view('tugasans', [
+            'biliks' => $biliks,
+        ]);
+    }
 }

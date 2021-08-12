@@ -114,4 +114,35 @@ class AktifController extends Controller
             'rooms' => $rooms
         ]);
     }
+
+    public function cariaktif(Request $request)
+    {
+        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
+        $phone = $request->phone;
+        $name = $request->name;
+        $officer_name = $request->officer_name;
+        // dd($name, $phone);
+        if ( $phone != null && $name == null && $officer_name == null) {
+            $response = Http::post($url, [
+                "phone" => $phone,
+            ]);
+        } else if($phone == null && $name != null && $officer_name == null ) {
+            $response = Http::post($url, [
+                "name" => $name
+            ]);
+        }else if($phone == null && $name == null && $officer_name != null ) {
+            $response = Http::post($url, [
+                "officer_name" => $officer_name
+            ]);
+        }else{
+            return redirect('/aktif');
+        }
+        $biliks = $response->json();
+        $biliks = json_encode($biliks);
+        $biliks = json_decode($biliks, TRUE)['rooms'];
+
+        return view('aktif', [
+            'biliks' => $biliks,
+        ]);
+    }
 }

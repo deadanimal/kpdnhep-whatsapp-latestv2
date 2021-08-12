@@ -24,6 +24,36 @@
     </div>
 </div>
 <h1>Senarai maklumbalas aktif</h1>
+
+<div class="row">
+    <div class="col">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Tapisan</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <form action="/cariaktif" method="POST">
+                        @csrf
+                        <div class="col-lg-2">
+                            <input type="text" placeholder="No telefon" class="form-control" name="phone">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" placeholder="Nama" class="form-control" name="name">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" placeholder="Nama Pegawai" class="form-control" name="officer_name">
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-w-m btn-success">Cari</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col">
         <div class="ibox ">
