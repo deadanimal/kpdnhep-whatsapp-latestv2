@@ -30,7 +30,7 @@
                                 <ul>
                                     <li><a class="nav-link text-center" href="/laporanbulanan">Bulanan</a>
                                     </li>
-                                    <li><a class="nav-link text-center" href="#">Pegawai</a>
+                                    <li><a class="nav-link text-center" href="/laporanpegawai">Pegawai</a>
                                     </li>
                                 </ul>
                             </div>
