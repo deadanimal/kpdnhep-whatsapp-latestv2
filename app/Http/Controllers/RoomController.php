@@ -122,7 +122,6 @@ class RoomController extends Controller
             $response = Http::post($url, [
                 "phone" => $phone,
             ]);
-            dd($response);
         } else if($phone == null && $name != null && $officer_name == null ) {
             $response = Http::post($url, [
                 "name" => $name
