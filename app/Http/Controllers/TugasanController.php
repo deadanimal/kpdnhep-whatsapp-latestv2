@@ -121,16 +121,21 @@ class TugasanController extends Controller
             "message_text" => $hantar,
         ]);
 
-        $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
-        $response = Http::get($url);
-        $mesejs = $response->json();
-        $try = json_encode($mesejs);
-        $mesejs = json_decode($try, TRUE)['messages'];
-        $rooms = json_decode($try, TRUE)['room'];
+        if($send->successful()) {
+            $url = '/hantar/{{$id}}';
+            return redirect($url);
+        }
 
-        return view('mesej', [
-            'mesejs' => $mesejs,
-            'rooms' => $rooms
-        ]);
+        // $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
+        // $response = Http::get($url);
+        // $mesejs = $response->json();
+        // $try = json_encode($mesejs);
+        // $mesejs = json_decode($try, TRUE)['messages'];
+        // $rooms = json_decode($try, TRUE)['room'];
+
+        // return view('mesej', [
+        //     'mesejs' => $mesejs,
+        //     'rooms' => $rooms
+        // ]);
     }
 }

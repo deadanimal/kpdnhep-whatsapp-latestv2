@@ -94,12 +94,7 @@
                 </div> -->
                 <textarea class="form-control message-input my-3" id="chatbox" name="hantar" placeholder="Enter message text"></textarea>
                 <button class="btn btn-primary" type="submit">Hantar</button>
-                <div class="hide" id="hidden_div_catatan">
-                    <h1>test</h1>
-                </div>
-                <div class="hide" id="hidden_div_pentadbir">
-                    <h1>test2</h1>
-                </div>
+
             </form>
         </div>
 
@@ -107,7 +102,8 @@
     <div class="col-lg-4">
 
         <div class="ibox">
-            <div class="ibox-content text-center">
+
+            <div class="ibox-title text-center">
                 <h1>{{$room['name']}}</h1>
                 <h3>{{$room['phone']}}</h3>
                 <p class="card-text">Status bot:
@@ -122,9 +118,20 @@
                 @else
                 <a href="/room/{{$room['id']}}/aktif" class="btn btn-primary">Aktifkan Bot?</a>
                 @endif
-
-
             </div>
+
+            @if ($mesejs['media_url'] != null)
+            <div class="ibox-content">
+                <div class="h5">
+                    Perkongsian Multimedia<span><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                </div>
+                <ul>
+                    <li>
+                        {{$mesejs['media_url']}}
+                    </li>
+                </ul>
+            </div>
+            @endif
         </div>
 
     </div>

@@ -182,7 +182,7 @@ class LaporanhelpdeskController extends Controller
             $fileName = time() . '_' . $request->file('dokumen')->getClientOriginalName();
             $filePath = Storage::putFile('najhan', $request->file('dokumen'), 'public');#$filePath = $request->file('dokumen')->storeAs('najhan', $fileName, 'public');
             $extension = $request->file('dokumen')->getClientOriginalExtension();
-
+// dd($extension);
             if ($extension == "pdf") {
                 $saiz = $request->file('dokumen')->getSize();
                 if($saiz) {
@@ -190,7 +190,7 @@ class LaporanhelpdeskController extends Controller
                 } else {
                     $saiz = rand(500,1999);
                 }
-                if ($saiz > 2000) {
+                if ($saiz > 1800) {
                     echo "<script>alert('Saiz lampiran tidak boleh melebihi 2mb.');</script>";
                 } else {
                     $laporanhelpdesk->bentuk = $extension;
