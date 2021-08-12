@@ -102,6 +102,7 @@ class TugasanController extends Controller
         $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
         $response = Http::get($url);
         $mesejs = $response->json();
+        dd($mesejs);
         $try = json_encode($mesejs);
         $mesejs = json_decode($try, TRUE)['messages'];
         $room = json_decode($try, TRUE)['room'];
