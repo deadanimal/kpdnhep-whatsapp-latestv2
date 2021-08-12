@@ -94,9 +94,10 @@
                 </div> -->
                 <textarea class="form-control message-input my-3" id="chatbox" name="hantar" placeholder="Enter message text"></textarea>
                 <button class="btn btn-primary" type="submit">Hantar</button>
-                
-
             </form>
+            <a href="/hantar/{{$room ['id']}}">
+                <button class="btn btn-success btn-block">Refresh</button>
+            </a>
         </div>
 
     </div>

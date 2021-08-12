@@ -50,11 +50,18 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>-</td>
+                    <td>A. Johan bin Ag Othman</td>
                     <td>0</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0.05</td>
+                </tr>
+                <tr>
+                    <td>Abd. Aziz Bin Slamin</td>
                     <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0.05</td>
                 </tr>
             </tbody>
         </table>

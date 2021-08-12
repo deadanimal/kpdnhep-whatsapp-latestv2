@@ -130,4 +130,8 @@ class MesejController extends Controller
         return redirect('room');
 
     }
+
+    public function segar($id){
+        
+    }
 }
