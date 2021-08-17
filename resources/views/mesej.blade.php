@@ -35,6 +35,7 @@
             <div class="chat-discussion">
                 @foreach($mesejs as $mesej)
                 @if ($mesej['direction'] == "receive")
+                
                 <div class="chat-message left">
                     <div class="message">
                         <a class="message-author" href="#"> {{$room['name']}} </a>
@@ -43,6 +44,7 @@
                             {{$mesej['message_text']}}
                         </span>
                     </div>
+                    <input type="checkbox" value="">
                 </div>
                 @else
                 <div class="chat-message right">
@@ -98,6 +100,9 @@
             <a href="/hantar/{{$room ['id']}}">
                 <button class="btn btn-success btn-block">Refresh</button>
             </a>
+            <a href="#">
+                <button class="btn btn-warning btn-block" style="margin-top: 10px;">Cipta Aduan</button>
+            </a>
         </div>
 
     </div>
@@ -135,6 +140,14 @@
 
         if (x.value != 5) {
             document.getElementById("templatela").className = "form-control hide";
+        }
+
+        if (x.value != 6) {
+            document.getElementById("pertanyaan").className = "form-control hide";
+        }
+
+        if (x.value != 7) {
+            document.getElementById("luarbidang").className = "form-control hide";
         }
 
         if (x.value == 1) {

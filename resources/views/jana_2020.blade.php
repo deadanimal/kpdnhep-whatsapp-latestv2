@@ -1,4 +1,10 @@
 @extends('layouts.main')
+<style>
+    #chartdiv {
+        width: 100%;
+        height: 500px;
+    }
+</style>
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading mb-4">
     <div class="col-lg-10">
@@ -110,6 +116,12 @@
     </div>
 </div>
 
+<div class="ibox">
+    <div class="ibox-content">
+        <div id="chartdiv"></div>
+    </div>
+</div>
+
 @stop
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -130,4 +142,251 @@
             ]
         });
     });
+</script>
+
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+    am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create chart instance
+        var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+        // Set data
+        var selected;
+        var types = [
+            {
+                type: "Januari",
+                percent: 70,
+                color: chart.colors.getIndex(0),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "Februari",
+                percent: 70,
+                color: chart.colors.getIndex(1),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "Mac",
+                percent: 70,
+                color: chart.colors.getIndex(3),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "April",
+                percent: 70,
+                color: chart.colors.getIndex(5),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "Mei",
+                percent: 70,
+                color: chart.colors.getIndex(7),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "Jun",
+                percent: 70,
+                color: chart.colors.getIndex(9),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "Julai",
+                percent: 70,
+                color: chart.colors.getIndex(11),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "Ogos",
+                percent: 70,
+                color: chart.colors.getIndex(2),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "September",
+                percent: 70,
+                color: chart.colors.getIndex(4),
+                subs: [{
+                    type: "Oil",
+                    percent: 15
+                }, {
+                    type: "Coal",
+                    percent: 35
+                }, {
+                    type: "Nuclear",
+                    percent: 20
+                }]
+            },
+            {
+                type: "Oktober",
+                percent: 30,
+                color: chart.colors.getIndex(6),
+                subs: [{
+                    type: "Hydro",
+                    percent: 15
+                }, {
+                    type: "Wind",
+                    percent: 10
+                }, {
+                    type: "Other",
+                    percent: 5
+                }]
+            },
+            {
+                type: "November",
+                percent: 30,
+                color: chart.colors.getIndex(10),
+                subs: [{
+                    type: "Hydro",
+                    percent: 15
+                }, {
+                    type: "Wind",
+                    percent: 10
+                }, {
+                    type: "Other",
+                    percent: 5
+                }]
+            },
+            {
+                type: "Disember",
+                percent: 30,
+                color: chart.colors.getIndex(8),
+                subs: [{
+                    type: "Hydro",
+                    percent: 15
+                }, {
+                    type: "Wind",
+                    percent: 10
+                }, {
+                    type: "Other",
+                    percent: 5
+                }]
+            }
+        ];
+
+        // Add data
+        chart.data = generateChartData();
+
+        // Add and configure Series
+        var pieSeries = chart.series.push(new am4charts.PieSeries());
+        pieSeries.dataFields.value = "percent";
+        pieSeries.dataFields.category = "type";
+        pieSeries.slices.template.propertyFields.fill = "color";
+        pieSeries.slices.template.propertyFields.isActive = "pulled";
+        pieSeries.slices.template.strokeWidth = 0;
+
+        function generateChartData() {
+            var chartData = [];
+            for (var i = 0; i < types.length; i++) {
+                if (i == selected) {
+                    for (var x = 0; x < types[i].subs.length; x++) {
+                        chartData.push({
+                            type: types[i].subs[x].type,
+                            percent: types[i].subs[x].percent,
+                            color: types[i].color,
+                            pulled: true
+                        });
+                    }
+                } else {
+                    chartData.push({
+                        type: types[i].type,
+                        percent: types[i].percent,
+                        color: types[i].color,
+                        id: i
+                    });
+                }
+            }
+            return chartData;
+        }
+
+        pieSeries.slices.template.events.on("hit", function(event) {
+            if (event.target.dataItem.dataContext.id != undefined) {
+                selected = event.target.dataItem.dataContext.id;
+            } else {
+                selected = undefined;
+            }
+            chart.data = generateChartData();
+        });
+
+    }); // end am4core.ready()
 </script>

@@ -165,6 +165,9 @@ class LaporanhelpdeskController extends Controller
     public function simpan_muatnaik(Request $request)
     {        
         $extension = $request->file('dokumen')->getClientOriginalExtension();
+        if ($extension == null){
+            return redirect('/laporanhelpdesk')->withErrors('Sila masukkan lampiran berbentuk pdf.');
+        }
         if ($extension != "pdf") {
             return redirect('/laporanhelpdesk')->withErrors('Sila masukkan lampiran berbentuk pdf.');
         }
@@ -176,13 +179,27 @@ class LaporanhelpdeskController extends Controller
         $laporanhelpdesk->keterangan = $request->keterangan;
         $laporanhelpdesk->status = "Baru";
         $laporanhelpdesk->keterangan_vendor = $request->keterangan_vendor;
+
+        $rules = [
+            'isu' => 'required',
+            'tahap' => 'required',
+            'keterangan' => 'required',
+        ];
+
+        $messages = [
+            'isu.required' => 'Sila masukkan isu yang dilaporkan',
+            'tahap.rquired' => 'Sila pilih tahap isu tersebut',
+            'keterangan.required' => 'Sila berikan keterangan mengenai isu tersebut',
+        ];
+
+        Validator::make($request->input(), $rules, $messages)->validate();
         $laporanhelpdesk->save();
 
         if ($request->file()) {
             $fileName = time() . '_' . $request->file('dokumen')->getClientOriginalName();
             $filePath = Storage::putFile('najhan', $request->file('dokumen'), 'public');#$filePath = $request->file('dokumen')->storeAs('najhan', $fileName, 'public');
             $extension = $request->file('dokumen')->getClientOriginalExtension();
-// dd($extension);
+
             if ($extension == "pdf") {
                 $saiz = $request->file('dokumen')->getSize();
                 if($saiz) {
@@ -190,33 +207,19 @@ class LaporanhelpdeskController extends Controller
                 } else {
                     $saiz = rand(500,1999);
                 }
-                if ($saiz > 1800) {
+                if ($saiz > 2000) {
                     echo "<script>alert('Saiz lampiran tidak boleh melebihi 2mb.');</script>";
                 } else {
                     $laporanhelpdesk->bentuk = $extension;
                     $laporanhelpdesk->saiz = $saiz;
                     $laporanhelpdesk->nama_fail = time() . '_' . $request->file('dokumen')->getClientOriginalName();
                     $laporanhelpdesk->laluan_fail = $filePath;
-                    $laporanhelpdesk->save();
-                
-                    // $rules = [
-                    //     'isu' => 'required',
-                    //     'tahap' => 'required',
-                    //     'keterangan' => 'required',
-                    // ];
 
-                    // $messages = [
-                    //     'isu.required' => 'Sila masukkan isu yang dilaporkan',
-                    //     'tahap.rquired' => 'Sila pilih tahap isu tersebut',
-                    //     'keterangan.required' => 'Sila berikan keterangan mengenai isu tersebut',
-                    // ];
-
-                    // Validator::make($request->input(), $rules, $messages)->validate();
-                    
                     $laporanhelpdesk->save();
 
                     $recipient = ["harizhasani@pipeline-network.com", "najhan.mnajib@gmail.com"];
                     Mail::to($recipient)->send(new Helpdesk());
+
                     return redirect('/laporanhelpdesk/');
                 }
             } else {
