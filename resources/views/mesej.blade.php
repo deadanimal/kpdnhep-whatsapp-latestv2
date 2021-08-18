@@ -69,6 +69,9 @@
                     <option value=5>Agensi</option>
                     <option value=6>Pertanyaan/Cadangan</option>
                     <option value=7>Luar Bidang Kuasa</option>
+                    <option value=8>Maklumat Tak Lengkap</option>
+                    <option value=9>Tidak Releven</option>
+                    <option value=10>Rujuk TTPM</option>
                 </select>
                 <select id="templatela" class="form-control hide" onchange="malasla()">
                     <option value=0 selected>Pilih Template</option>
@@ -189,6 +192,12 @@
         } else if (x.value == 7) {
             // document.getElementById('templatela').style.display = "show";
             document.getElementById("luarbidang").className = "form-control";
+        } else if (x.value == 8) {
+            y.value = 'Tuan/Puan, Terima kasih kerana menghubungi KPDNHEP. Sila lengkapkan butiran aduan seperti berikut : (a) Nama (Nama Penuh Mengikut K/P). (b) No.K/P (Sila Nyatakan No K/P Yang Sah). (c) Alamat surat menyurat. (d) No telefon untuk dihubungi. (e) Email (Sekiranya ada). (f) Nama Premis. (g) Alamat Premis (Sila Nyatakan Alamat Lengkap Termasuk Daerah). (h) Keterangan Aduan. (i) Gambar Bukti (Sekiranya Ada). (j) Sekiranya Aduan Berkenaan Transaksi Atas Talian Mohon Kemukakan Nama Bank Dan No Akaun Bank / No Transaksi FPX Yang Terlibat. Setelah selesai, sila taip TAMAT. Terima kasih. *Hanya aduan melalui pesanan teks sahaja yang akan diproses.* *Sekiranya Tuan/Puan gagal untuk melengkapkan maklumat yang diperlukan dalam tempoh 3 hari bekerja, pihak kami menganggap Tuan/Puan tidak berminat untuk meneruskan aduan ini dan seterusnya aduan ini akan DITUTUP* #maklumattidaklengkap';
+        } else if (x.value == 9) {
+            y.value = 'Tuan/ Puan, Sekian Terima Kasih #kpdnhep';
+        } else if (x.value == 10) {
+            y.value = 'Tuan/ Puan, Berdasarkan semakan, aduan tuan/puan disarankan untuk memfailkan tuntutan tuan/puan kepada *TRIBUNAL TUNTUTAN PENGGUNA MALAYSIA (TTPM)* melalui saluran-saluran berikut: a) Sistem e-Tribunal V2 di https://ttpm.kpdnhep.gov.my b) Hadir ke Pejabat TTPM yang berhampiran. c) Talian Hotline TTPM 1-800-889-811. Sekian, terima kasih - KPDNHEP #ttpm';
         }
 
 
