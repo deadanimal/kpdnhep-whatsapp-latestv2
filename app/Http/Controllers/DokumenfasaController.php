@@ -42,10 +42,15 @@ class DokumenfasaController extends Controller
     public function store(Request $request)
     {
         //
-        $extension = $request->file('dokumen')->getClientOriginalExtension();
-        if ($extension != "pdf") {
-            return redirect('/laporanhelpdesk')->withErrors('Sila masukkan lampiran berbentuk pdf.');
-        }
+        $request->validate(
+            [
+                'dokumen' => 'required|mimes:jpg,jpeg,pdf|max:2048'
+            ],
+            [
+                'dokumen.required' => 'Sila penuhkan butiran tersebut',
+                'dokumen.mimes' => 'Lampiran hendaklah berbentuk jpg, jpeg, atau pdf'
+            ]
+        );
 
         $dokumenfasa = new Dokumenfasa;
 
