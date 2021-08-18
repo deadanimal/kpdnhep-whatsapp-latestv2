@@ -53,6 +53,19 @@ class DokumenfasaController extends Controller
         $dokumenfasa->fasa = $request->fasa;
         $dokumenfasa->catatan = $request->catatan;
 
+        $rules = [
+            'nama_dok' => 'required',
+            'fasa' => 'required',
+            'catatan' => 'required',
+        ];
+
+        $messages = [
+            'nama_dok.required' => 'Sila isi ruang nama dokumen tersebut',
+            'catatan.required' => 'Sila berikan catatan untuk dokumen tersebut',
+        ];
+
+        Validator::make($request->input(), $rules, $messages)->validate();
+
         if ($request->file()) {
             $fileName = time() . '_' . $request->file('dokumen')->getClientOriginalName();
             $filePath = Storage::putFile('najhan', $request->file('dokumen'), 'public');#$request->file('file')->storeAs('najhan', $fileName, 'public');
@@ -71,20 +84,6 @@ class DokumenfasaController extends Controller
                     $dokumenfasa->saiz = $request->file('dokumen')->getSize();
                     $dokumenfasa->nama_fail = time() . '_' . $request->file('dokumen')->getClientOriginalName();
                     $dokumenfasa->laluan_fail = $filePath;
-                    $dokumenfasa->save();
-
-                    $rules = [
-                        'nama_dok' => 'required',
-                        'fasa' => 'required',
-                        'catatan' => 'required',
-                    ];
-
-                    $messages = [
-                        'nama_dok.required' => 'Sila isi ruang nama dokumen tersebut',
-                        'catatan.required' => 'Sila berikan catatan untuk dokumen ters',
-                    ];
-
-                    Validator::make($request->input(), $rules, $messages)->validate();
                     $dokumenfasa->save();
                 }
             } else {
