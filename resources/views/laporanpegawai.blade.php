@@ -1,4 +1,14 @@
 @extends('layouts.main')
+<style>
+    /* #chartdiv1 {
+        width: 100%;
+        height: 500px;
+    }
+    #chartdiv2 {
+        width: 100%;
+        height: 500px;
+    } */
+</style>
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading mb-4">
     <div class="col-lg-10">
@@ -232,16 +242,46 @@
                     <td>0.03</td>
                 </tr>
             </tbody>
-            <tfoot>
-            <tr>
-                <th>Jumlah</th>
-                <th>0</th>
-                <th>3912</th>
-                <th>3912</th>
-                <th>100.00</th>
-            </tr>
-        </tfoot>
+            <!-- <tfoot>
+                <tr>
+                    <th>Jumlah</th>
+                    <th>0</th>
+                    <th>3912</th>
+                    <th>3912</th>
+                    <th>100.00</th>
+                </tr>
+            </tfoot> -->
         </table>
+    </div>
+</div>
+
+<div class="ibox">
+    <div class="ibox-content">
+        <div class="col">
+            <div class="tabs-container">
+
+                <div class="tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li><a class="nav-link" data-toggle="tab" href="#tab-6">Jumlah maklumbalas (tutup)</a></li>
+                        <li><a class="nav-link active" data-toggle="tab" href="#tab-7">Jumlah Aduan dicipta</a></li>
+                    </ul>
+                    <div class="tab-content ">
+                        <div id="tab-6" class="tab-pane">
+                            <div class="panel-body">
+                            <div id="chartdiv1"></div>
+                            </div>
+                        </div>
+                        <div id="tab-7" class="tab-pane active">
+                            <div class="panel-body">
+                                <div id="chartdiv2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 @endif
@@ -267,4 +307,198 @@
             ]
         });
     });
+</script>
+
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+
+<script>
+    am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create chart instance
+        var chart = am4core.create("chartdiv1", am4charts.XYChart);
+        chart.scrollbarX = new am4core.Scrollbar();
+
+        // Add data
+        chart.data = [{
+            "country": "A. Johan Bin Ag Othman",
+            "visits": 0
+        }, {
+            "country": "Abd. Aziz Bin Slamin",
+            "visits": 0
+        }, {
+            "country": "Adibah Binti Jalaluddin",
+            "visits": 0
+        }, {
+            "country": "Afidah Binti Asmat",
+            "visits": 0
+        }, {
+            "country": "Ahmad Afiq Bin Ahmad Radzi",
+            "visits": 0
+        }, {
+            "country": "Ahmad Khuzairi Bin Salamat",
+            "visits": 0
+        }, {
+            "country": "Al-nurhisyam Bin Ahamad",
+            "visits": 0
+        }, {
+            "country": "Muhammad Syahir Husin Bin Haji Rusfan",
+            "visits": 0
+        }, {
+            "country": "Ngelingkong Anak Kusa",
+            "visits": 0
+        }, {
+            "country": "Norafida Binti Bulat",
+            "visits": 0
+        }, {
+            "country": "Norazlina Binti Yaakob",
+            "visits": 0
+        }, {
+            "country": "Nur Awanis Binti Katabe",
+            "visits": 0
+        }];
+
+        // Create axes
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "country";
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.renderer.minGridDistance = 30;
+        categoryAxis.renderer.labels.template.horizontalCenter = "right";
+        categoryAxis.renderer.labels.template.verticalCenter = "middle";
+        categoryAxis.renderer.labels.template.rotation = 270;
+        categoryAxis.tooltip.disabled = true;
+        categoryAxis.renderer.minHeight = 110;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.renderer.minWidth = 50;
+
+        // Create series
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.sequencedInterpolation = true;
+        series.dataFields.valueY = "visits";
+        series.dataFields.categoryX = "country";
+        series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
+        series.columns.template.strokeWidth = 0;
+
+        series.tooltip.pointerOrientation = "vertical";
+
+        series.columns.template.column.cornerRadiusTopLeft = 10;
+        series.columns.template.column.cornerRadiusTopRight = 10;
+        series.columns.template.column.fillOpacity = 0.8;
+
+        // on hover, make corner radiuses bigger
+        var hoverState = series.columns.template.column.states.create("hover");
+        hoverState.properties.cornerRadiusTopLeft = 0;
+        hoverState.properties.cornerRadiusTopRight = 0;
+        hoverState.properties.fillOpacity = 1;
+
+        series.columns.template.adapter.add("fill", function(fill, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        });
+
+        // Cursor
+        chart.cursor = new am4charts.XYCursor();
+
+    }); // end am4core.ready()
+</script>
+
+<script>
+    am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // Create chart instance
+        var chart = am4core.create("chartdiv2", am4charts.XYChart);
+        chart.scrollbarX = new am4core.Scrollbar();
+
+        // Add data
+        chart.data = [{
+            "country": "A. Johan Bin Ag Othman",
+            "visits": 711
+        }, {
+            "country": "Abd. Aziz Bin Slamin",
+            "visits": 1882
+        }, {
+            "country": "Adibah Binti Jalaluddin",
+            "visits": 1809
+        }, {
+            "country": "Afidah Binti Asmat",
+            "visits": 3025
+        }, {
+            "country": "Ahmad Afiq Bin Ahmad Radzi",
+            "visits": 1122
+        }, {
+            "country": "Ahmad Khuzairi Bin Salamat",
+            "visits": 1114
+        }, {
+            "country": "Al-nurhisyam Bin Ahamad",
+            "visits": 984
+        }, {
+            "country": "Muhammad Syahir Husin Bin Haji Rusfan",
+            "visits": 1322
+        }, {
+            "country": "Ngelingkong Anak Kusa",
+            "visits": 665
+        }, {
+            "country": "Norafida Binti Bulat",
+            "visits": 580
+        }, {
+            "country": "Norazlina Binti Yaakob",
+            "visits": 443
+        }, {
+            "country": "Nur Awanis Binti Katabe",
+            "visits": 441
+        }];
+
+        // Create axes
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "country";
+        categoryAxis.renderer.grid.template.location = 0;
+        categoryAxis.renderer.minGridDistance = 30;
+        categoryAxis.renderer.labels.template.horizontalCenter = "right";
+        categoryAxis.renderer.labels.template.verticalCenter = "middle";
+        categoryAxis.renderer.labels.template.rotation = 270;
+        categoryAxis.tooltip.disabled = true;
+        categoryAxis.renderer.minHeight = 110;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.renderer.minWidth = 50;
+
+        // Create series
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.sequencedInterpolation = true;
+        series.dataFields.valueY = "visits";
+        series.dataFields.categoryX = "country";
+        series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
+        series.columns.template.strokeWidth = 0;
+
+        series.tooltip.pointerOrientation = "vertical";
+
+        series.columns.template.column.cornerRadiusTopLeft = 10;
+        series.columns.template.column.cornerRadiusTopRight = 10;
+        series.columns.template.column.fillOpacity = 0.8;
+
+        // on hover, make corner radiuses bigger
+        var hoverState = series.columns.template.column.states.create("hover");
+        hoverState.properties.cornerRadiusTopLeft = 0;
+        hoverState.properties.cornerRadiusTopRight = 0;
+        hoverState.properties.fillOpacity = 1;
+
+        series.columns.template.adapter.add("fill", function(fill, target) {
+            return chart.colors.getIndex(target.dataItem.index);
+        });
+
+        // Cursor
+        chart.cursor = new am4charts.XYCursor();
+
+    }); // end am4core.ready()
 </script>
