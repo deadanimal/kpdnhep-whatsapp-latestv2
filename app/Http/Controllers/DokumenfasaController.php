@@ -48,7 +48,7 @@ class DokumenfasaController extends Controller
             ],
             [
                 'dokumen.required' => 'Sila penuhkan butiran tersebut',
-                'dokumen.mimes' => 'Lampiran hendaklah berbentuk jpg, jpeg, atau pdf'
+                'dokumen.mimes' => 'Lampiran hendaklah dalam bentuk jpg, jpeg, atau pdf'
             ]
         );
 

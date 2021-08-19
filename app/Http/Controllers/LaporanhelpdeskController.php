@@ -170,7 +170,7 @@ class LaporanhelpdeskController extends Controller
             ],
             [
                 'dokumen.required' => 'Sila penuhkan butiran tersebut',
-                'dokumen.mimes' => 'Lampiran hendaklah berbentuk jpg, jpeg, atau pdf'
+                'dokumen.mimes' => 'Lampiran hendaklah dalam bentuk jpg, jpeg, atau pdf'
             ]
         );
 
@@ -191,10 +191,9 @@ class LaporanhelpdeskController extends Controller
         ];
 
         $messages = [
-            'isu.required' => 'Sila masukkan isu yang dilaporkan',
+            'isu.required' => 'Sila isi nama isu',
             'tahap.rquired' => 'Sila pilih tahap isu tersebut',
-            'keterangan.required' => 'Sila berikan keterangan mengenai isu tersebut',
-            'dokumen.required' => 'test'
+            'keterangan.required' => 'Sila isi maklumat keterangan',
         ];
 
         Validator::make($request->input(), $rules, $messages)->validate();
