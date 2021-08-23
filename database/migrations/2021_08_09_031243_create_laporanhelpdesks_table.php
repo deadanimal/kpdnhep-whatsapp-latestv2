@@ -20,7 +20,6 @@ class CreateLaporanhelpdesksTable extends Migration
             $table->string('keterangan', 100);
             $table->string('nama_fail')->nullable();
             $table->string('laluan_fail')->nullable();
-            $table->string('bentuk')->nullable();
             $table->integer('saiz')->nullable();
             $table->string('status', 20)->nullable();
             $table->timestamps();
