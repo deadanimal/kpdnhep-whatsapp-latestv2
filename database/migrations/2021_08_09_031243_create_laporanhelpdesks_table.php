@@ -23,7 +23,6 @@ class CreateLaporanhelpdesksTable extends Migration
             $table->string('bentuk')->nullable();
             $table->integer('saiz')->nullable();
             $table->string('status', 20)->nullable();
-            $table->string('keterangan_vendor', 50)->nullable();
             $table->timestamps();
         });
     }
