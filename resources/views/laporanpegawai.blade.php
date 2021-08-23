@@ -19,8 +19,9 @@
     <div class="col">
         <div class="ibox">
             <div class="ibox-content">
-                <div class="form-group row">
-                    <form action="/hantaq" method="POST">
+                <form action="/hantaq" method="POST">
+                    <div class="form-group row">
+
                         @csrf
                         <div class="col-lg-2">
                             <label class=" col-form-label">Pilih tarikh</label>
@@ -32,12 +33,15 @@
                                 <input type="date" class="form-control-sm form-control" name="end" value="08/12/2021" />
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                    </div>
+                    <div class="row text-right">
+                        <div class="col" style="margin-right: 30px;">
                             <button class="btn btn-primary" type="submit">Jana</button>
                             <a href="/laporanpegawai"><button class="btn btn-success">Semula</button></a>
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
@@ -268,7 +272,7 @@
                     <div class="tab-content ">
                         <div id="tab-6" class="tab-pane">
                             <div class="panel-body">
-                            <div id="chartdiv1"></div>
+                                <div id="chartdiv1"></div>
                             </div>
                         </div>
                         <div id="tab-7" class="tab-pane active">
@@ -501,4 +505,8 @@
         chart.cursor = new am4charts.XYCursor();
 
     }); // end am4core.ready()
+
+    chart.exporting.events.on("exportfinished", function(ev) {
+        watermark.disabled = true;
+    });
 </script>

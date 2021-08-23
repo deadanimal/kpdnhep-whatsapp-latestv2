@@ -60,31 +60,99 @@
         </div>
 
         <div class="form-group text-right">
-            @if ($rooms['officer_name'] == "Tiada")
-            <form action="/room/{{$rooms['id']}}/officer" method="POST">
-                @csrf
-                <a href="/aktif" class="btn btn-success">Kembali</a>
+            @if(Auth::user()->role_code == 1)
+                @if ($rooms['officer_name'] == "Tiada")
+                <form action="/room/{{$rooms['id']}}/officer" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
 
-                <button type="submit" class="btn btn-primary">Tambah tugas</button>
-                
-            </form>
-            @elseif ($rooms['officer_name'] == "Najhan")
-            <form action="/room/{{$rooms['id']}}/officer_buang" method="POST">
-                @csrf
-                <a href="/aktif" class="btn btn-success">Kembali</a>
+                    <button type="submit" class="btn btn-primary">Tambah tugas</button>
+                    
+                </form>
+                @elseif ($rooms['officer_name'] == null)
+                <form action="/room/{{$rooms['id']}}/officer" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
 
-                <button type="submit" class="btn btn-danger">Buang tugas</button>
-                
-            </form>
-            @else
-            <form action="/room/{{$rooms['id']}}/officer" method="POST">
-                @csrf
-                <a href="/aktif" class="btn btn-success">Kembali</a>
+                    <button type="submit" class="btn btn-primary">Tambah tugas</button> 
+                </form>
+                @else
+                <form action="/room/{{$rooms['id']}}/officer_buang" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
 
-                <button type="submit" class="btn btn-primary">Tambah tugas</button>
-                
-            </form>
+                    <button type="submit" class="btn btn-danger">Buang tugas</button>
+                    
+                </form>
+                @endif
+            @elseif(Auth::user()->role_code == 2)
+                @if ($rooms['officer_name'] == "Tiada")
+                <form action="/room/{{$rooms['id']}}/officer" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                    <button type="submit" class="btn btn-primary">Tambah tugas</button>
+                    
+                </form>
+                @elseif ($rooms['officer_name'] == null)
+                <form action="/room/{{$rooms['id']}}/officer" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                    <button type="submit" class="btn btn-primary">Tambah tugas</button> 
+                </form>
+                @else
+                <form action="/room/{{$rooms['id']}}/officer_buang" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                    <button type="submit" class="btn btn-danger">Buang tugas</button>
+                    
+                </form>
+                @endif
+            @elseif(Auth::user()->role_code == 3)
+                @if ($rooms['officer_name'] == "Tiada")
+                <form action="/room/{{$rooms['id']}}/officer" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                    <button type="submit" class="btn btn-primary">Tambah tugas</button>
+                    
+                </form>
+                @elseif ($rooms['officer_name'] == null)
+                <form action="/room/{{$rooms['id']}}/officer" method="POST">
+                    @csrf
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                    <button type="submit" class="btn btn-primary">Tambah tugas</button> 
+                </form>
+                @else
+                    @if($rooms['officer_name'] == Auth::user()->name)
+                    <form action="/room/{{$rooms['id']}}/officer_buang" method="POST">
+                        @csrf
+                        <a href="/aktif" class="btn btn-success">Kembali</a>
+
+                        <button type="submit" class="btn btn-danger">Buang tugas</button>
+                        
+                    </form>
+                    @else
+                    <a href="/aktif" class="btn btn-success">Kembali</a>
+                    @endif
+                @endif
             @endif
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="ibox">
+
+            <div class="ibox-title text-center">
+                <h1>{{$rooms['name']}}</h1>
+                <h3>{{$rooms['phone']}}</h3>
+            </div>
+
         </div>
 
     </div>

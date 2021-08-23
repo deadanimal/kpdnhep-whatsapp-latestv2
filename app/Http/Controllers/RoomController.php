@@ -158,7 +158,7 @@ class RoomController extends Controller
     {
         $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/" . $room_id . "/officer";
         $response = Http::post($url, [
-            "officer_name" => 'Najhan' #$request->officer_name
+            "officer_name" => $request->user()->name
         ]);
 
         if ($response->successful()) {

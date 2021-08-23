@@ -1,9 +1,11 @@
 @extends('layouts.main')
 @section('content')
 <h1>Laporan Helpdesk</h1>
+@if ( Auth::user()->role_code == superadmin)
 <button style="margin-bottom: 20px; " type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Tambah laporan
 </button>
+@endif
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
     <strong>{{ $message }}</strong>
@@ -72,7 +74,10 @@
                             <th class="text-center">Saiz lampiran (kb)</th>
                             <th>Status</th>
                             <th>Keterangan Vendor</th>
+
+                            @if ( Auth::user()->role_code == vendor)
                             <th></th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -85,6 +90,8 @@
                             <td class="text-center">{{$laporanhelpdesk->saiz}}</td>
                             <td>{{$laporanhelpdesk->status}}</td>
                             <td>{{$laporanhelpdesk->keterangan_vendor}}</td>
+
+                            @if ( Auth::user()->role_code == vendor)
                             <td class="text-center">
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kemaskini-{{$laporanhelpdesk->id}}">
                                     Kemaskini
@@ -123,6 +130,7 @@
                                     <button class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i></button>
                                 </a>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

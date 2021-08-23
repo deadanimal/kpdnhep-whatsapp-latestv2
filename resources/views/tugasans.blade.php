@@ -69,7 +69,7 @@
                     </thead>
                     <tbody>
                         @foreach($biliks as $bilik)
-                        @if ($bilik['officer_name'] == "Najhan")
+                        @if ($bilik['officer_name'] == Auth::user()->name)
                         <tr>
                             <td>{{$bilik['phone']}}</td>
                             <td>{{$bilik['name']}}</td>

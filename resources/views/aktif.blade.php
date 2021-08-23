@@ -78,7 +78,9 @@
                             <td>{{ date('d-m-Y h:m:s', strtotime($bilik['updated_at'])) }}</td>
                             <td>{{ date('d-m-Y h:m:s', strtotime($bilik['created_at'])) }}</td>
                             <td>
-                                @if($bilik['officer_name'] != "Najhan")
+                                @if($bilik['officer_name'] == "Tiada")
+                                Tiada
+                                @elseif ($bilik['officer_name'] == null)
                                 Tiada
                                 @else
                                 {{$bilik['officer_name']}}

@@ -517,6 +517,9 @@
             ]
         });
     });
+
+    $('g:has(> g[stroke="#3cabff"])').hide();
+    
 </script>
 
 <script src="https://cdn.amcharts.com/lib/4/core.js"></script>

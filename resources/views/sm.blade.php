@@ -9,8 +9,10 @@
                         <i class="fa fa-whatsapp text-center" style="font-size: 120px; color:#54C861"></i>
                         <h3>Whatsapp</h3>
                     </div>
+
                     <div class="col-sm-8 col-xs-6">
                         <div class="row">
+                            @if ( Auth::user()->role_code != vendor)
                             <div class="col-sm-4">
                                 <h4>Senarai Maklumbalas</h4>
                                 <ul>
@@ -34,7 +36,9 @@
                                     </li>
                                 </ul>
                             </div>
+                            @endif
                             <div class="col-sm-4">
+                                @if ( Auth::user()->role_code == superadmin)
                                 <h4>Senarai Pentadbiran</h4>
                                 <ul>
                                     <li><a class="nav-link text-center" href="/laporanhelpdesk">Laporan Helpdesk</a>
@@ -42,7 +46,16 @@
                                     <li><a class="nav-link text-center" href="/dokumenfasa">Simpanan dokumen mengikut fasa</a>
                                     </li>
                                 </ul>
+                                @endif
+                                @if ( Auth::user()->role_code == vendor)
+                                <h4>Senarai Pentadbiran</h4>
                                 <ul>
+                                    <li><a class="nav-link text-center" href="/laporanhelpdesk">Laporan Helpdesk</a>
+                                    </li>
+                                    <li><a class="nav-link text-center" href="/dokumenfasa">Simpanan dokumen mengikut fasa</a>
+                                    </li>
+                                </ul>
+                                @endif
                             </div>
                         </div>
                     </div>
