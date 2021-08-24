@@ -131,12 +131,14 @@
                                 <a href="http://blockchain-launcher.sgp1.digitaloceanspaces.com/{{$laporanhelpdesk->laluan_fail}}" download>
                                     <button class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i></button>
                                 </a>
-                                @else
+                            </td>
+                            @else
+                            <td>
                                 <a href="http://blockchain-launcher.sgp1.digitaloceanspaces.com/{{$laporanhelpdesk->laluan_fail}}" download>
                                     <button class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i></button>
                                 </a>
-                                @endif
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
