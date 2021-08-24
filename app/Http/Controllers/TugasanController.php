@@ -185,7 +185,7 @@ class TugasanController extends Controller
         // dd($array_string);
         
         # nama
-        $nama = implode(" ", array_slice(explode(" ", $array_string[1]),4));
+        $nama = implode(" ", array_slice(explode(" ", $array_string[1]),5));
 
         # ic number
         $ic = implode(" ", array_slice(explode(" ", $array_string[2]),3));
