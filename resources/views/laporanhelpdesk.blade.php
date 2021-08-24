@@ -129,6 +129,10 @@
                                 <a href="http://blockchain-launcher.sgp1.digitaloceanspaces.com/{{$laporanhelpdesk->laluan_fail}}" download>
                                     <button class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i></button>
                                 </a>
+                                else
+                                <a href="http://blockchain-launcher.sgp1.digitaloceanspaces.com/{{$laporanhelpdesk->laluan_fail}}" download>
+                                    <button class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i></button>
+                                </a>
                             </td>
                             @endif
                         </tr>
