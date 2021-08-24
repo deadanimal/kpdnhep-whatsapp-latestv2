@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login2');
+    return view('loginpage');
 });
 
 Route::get('/sm', function () {
