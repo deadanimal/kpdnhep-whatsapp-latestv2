@@ -128,15 +128,6 @@
             <a href="/hantar/{{$room ['id']}}">
                 <button class="btn btn-success btn-block">Refresh</button>
             </a>
-            <form action="/potong/{{$room['id']}}/{{ $key }}">
-                @csrf
-                <input class="form-control message-input my-3" type="text" id="nombor">
-                <button class="btn btn-warning btn-block" type="submit" style="margin-top: 10px;">Cipta Aduan</button>
-            </form>
-            <a href="/potong/{{$room['id']}}/{{ $key }}">
-                <input class="form-control message-input my-3" type="text" id="nombor">
-                <button class="btn btn-warning btn-block" style="margin-top: 10px;">Cipta Aduan</button>
-            </a>
         </div>
 
     </div>
