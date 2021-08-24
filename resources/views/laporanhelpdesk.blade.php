@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 <h1>Laporan Helpdesk</h1>
-@if ( Auth::user()->role_code == superadmin)
+@if ( Auth::user()->role_code == 1)
 <button style="margin-bottom: 20px; " type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Tambah laporan
 </button>
@@ -75,7 +75,7 @@
                             <th>Status</th>
                             <th>Keterangan Vendor</th>
 
-                            @if ( Auth::user()->role_code == vendor)
+                            @if ( Auth::user()->role_code == 4)
                             <th></th>
                             @endif
                         </tr>
@@ -91,7 +91,7 @@
                             <td>{{$laporanhelpdesk->status}}</td>
                             <td>{{$laporanhelpdesk->keterangan_vendor}}</td>
 
-                            @if ( Auth::user()->role_code == vendor)
+                            @if ( Auth::user()->role_code == 4)
                             <td class="text-center">
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#kemaskini-{{$laporanhelpdesk->id}}">
                                     Kemaskini
