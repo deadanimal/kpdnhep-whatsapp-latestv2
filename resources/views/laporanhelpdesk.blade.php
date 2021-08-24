@@ -77,6 +77,8 @@
 
                             @if ( Auth::user()->role_code == 4)
                             <th></th>
+                            @else
+                            <th></th>
                             @endif
                         </tr>
                     </thead>
