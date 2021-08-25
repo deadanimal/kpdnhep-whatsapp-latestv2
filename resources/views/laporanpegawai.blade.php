@@ -52,7 +52,7 @@
 <div class="ibox">
     <div class="ibox-content">
         <h3 class="text-center">Laporan Statistik Kecekapan Pegawai dari {{$start}} hingga {{$end}}.</h3>
-        <table id="example" class="display nowrap" style="width:100%">
+        <table id="example1" class="display nowrap" style="width:100%">
             <thead>
                 <tr>
                     <th>Nama pegawai</th>
@@ -304,13 +304,19 @@
 
 <script>
     $(document).ready(function() {
-        $('#example').DataTable({
+
+        $('#tab-7').remove();
+        $('#tab-6').remove();
+        
+        $('#example1').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
             ]
         });
     });
+
+    $('g:has(> g[stroke="#3cabff"])').hide();
 </script>
 
 <script src="https://cdn.amcharts.com/lib/4/core.js"></script>

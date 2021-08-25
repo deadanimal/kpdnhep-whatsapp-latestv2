@@ -21,13 +21,12 @@ class TugasanController extends Controller
         $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms";
         $response = Http::get($url);
         $biliks = $response->json();
+        // dd($biliks);
         $biliks = json_encode($biliks);
         $biliks = json_decode($biliks, TRUE)['rooms'];
-        // dd($response['rooms']);
-        $rooms = Room::all();
+        
 
         return view('tugasans', [
-            'rooms' => $rooms,
             'biliks' => $biliks
         ]);
     }
@@ -104,6 +103,7 @@ class TugasanController extends Controller
         $mesejs = $response->json();
         $try = json_encode($mesejs);
         $mesejs = json_decode($try, TRUE)['messages'];
+        // dd($mesejs);
         // dd($mesejs[87]['message_text']);
 
         $room = json_decode($try, TRUE)['room'];

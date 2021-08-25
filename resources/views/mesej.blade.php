@@ -43,7 +43,16 @@
                         <span class="message-content">
                             {{$mesej['message_text']}}
                         </span>
+                        @if($mesej['media_url'] != null)
+                        <span class="message-content">
+                            <img src="{{$mesej['media_url']}}" alt="testing" style="max-width: 500px;">
+                        </span>
+                        <span class="message-content">
+                            <a href="{{$mesej['media_url']}}">Buka lampiran</a>
+                        </span>
+                        @endif
                     </div>
+                    <!-- {{$mesej['message_type']}} -->
                     <!-- <input id="adu" type="checkbox" value="{{$mesej['id']}}" onchange="nomboradu()"> -->
                     <a href="/potong/{{$room['id']}}/{{ $key }}">
                         <button class="btn btn-warning btn-sm">Cipta aduan</button>
@@ -151,7 +160,6 @@
                 <a href="/room/{{$room['id']}}/aktif" class="btn btn-primary">Aktifkan Bot?</a>
                 @endif
             </div>
-
         </div>
 
     </div>

@@ -24,10 +24,8 @@ class RoomController extends Controller
         $biliks = json_encode($biliks);
         $biliks = json_decode($biliks, TRUE)['rooms'];
         // dd($response['rooms']);
-        $rooms = Room::all();
 
         return view('room', [
-            'rooms' => $rooms,
             'biliks' => $biliks
         ]);
     }

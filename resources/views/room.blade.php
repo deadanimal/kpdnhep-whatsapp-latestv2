@@ -78,12 +78,12 @@
                             <td>{{$bilik['name']}}</td>
                             <td>{{date('d-m-Y h:m:s', strtotime($bilik['updated_at']))}}</td>
                             <td>
-                                @if($bilik['officer_name'] == "Najhan")
-                            {{$bilik['officer_name']}}
-                            @else
-                            Tiada
-                            @endif
-                        </td>
+                                @if($bilik['officer_name'] != null)
+                                {{$bilik['officer_name']}}
+                                @else
+                                Tiada
+                                @endif
+                            </td>
                             <td>
                                 @if($bilik['active']) 
                                     Ya | <a href="/room/{{$bilik['id']}}/aktif">Nyahaktif bot?</a>
