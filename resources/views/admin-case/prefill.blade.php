@@ -127,7 +127,11 @@
                                     <label for="CA_DOCNO" class="col-sm-6 control-label required">No. Kad Pengenalan/Pasport</label>
                                     <div class="col-sm-6">
                                         <!--<div class="input-group">-->
+                                        @if ($ic != null)
+                                        <input class="form-control input-sm" id="CA_DOCNO" maxlength="12" name="CA_DOCNO" type="text" value="{{$ic}}">
+                                        @else
                                         <input class="form-control input-sm" id="CA_DOCNO" maxlength="12" name="CA_DOCNO" type="text" value="">
+                                        @endif
                                         <!--<span class="input-group-btn">-->
                                         <!--<button class="btn btn-primary btn-sm" type="button" id="CheckJpn">Semak JPN</button>-->
                                         <!--<button class="ladda-button ladda-button-demo btn btn-primary btn-sm" type="button" data-style="expand-right" id="CheckJpn">Semak JPN</button>-->
@@ -141,7 +145,7 @@
                                 <div class="form-group">
                                     <label for="CA_EMAIL" class="col-sm-6 control-label required1">Emel</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control input-sm" name="CA_EMAIL" type="email" value="" id="CA_EMAIL">
+                                        <input class="form-control input-sm" name="CA_EMAIL" type="email" value="{{$email}}" id="CA_EMAIL">
                                         <style scoped>
                                             input:invalid,
                                             textarea:invalid {
@@ -154,7 +158,7 @@
                                 <div class="form-group">
                                     <label for="CA_MOBILENO" class="col-sm-6 control-label required1">No. Telefon (Bimbit)</label>
                                     <div class="col-sm-6">
-                                        <input class="form-control input-sm" onkeypress="return isNumberKey(event)" maxlength="12" name="CA_MOBILENO" type="text" value="" id="CA_MOBILENO">
+                                        <input class="form-control input-sm" onkeypress="return isNumberKey(event)" maxlength="12" name="CA_MOBILENO" type="text" value="{{$telefon}}" id="CA_MOBILENO">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -172,7 +176,7 @@
                                 <div class="form-group">
                                     <label for="CA_ADDR" class="col-sm-6 control-label">Alamat</label>
                                     <div class="col-sm-6">
-                                        <textarea class="form-control input-sm" rows="4" name="CA_ADDR" cols="50" id="CA_ADDR"></textarea>
+                                        <textarea class="form-control input-sm" rows="4" name="CA_ADDR" cols="50" id="CA_ADDR">{{$alamat}}</textarea>
                                         <input class="form-control input-sm" id="CA_MYIDENTITY_ADDR" name="CA_MYIDENTITY_ADDR" type="hidden" value="">
                                     </div>
                                 </div>
@@ -187,7 +191,11 @@
                                 <div class="form-group">
                                     <label for="CA_NAME" class="col-sm-3 control-label required">Nama</label>
                                     <div class="col-sm-9">
+                                        @if ($nama != null)
+                                        <input class="form-control input-sm" id="CA_NAME" name="CA_NAME" type="text" value="{{$nama}}">
+                                        @else
                                         <input class="form-control input-sm" id="CA_NAME" name="CA_NAME" type="text" value="">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -847,7 +855,7 @@
                                 <div class="form-group">
                                     <label for="CA_AGAINSTNM" class="col-sm-5 control-label required">Nama (Syarikat/Premis/Penjual)</label>
                                     <div class="col-sm-7">
-                                        <input class="form-control input-sm" name="CA_AGAINSTNM" type="text" value="" id="CA_AGAINSTNM">
+                                        <input class="form-control input-sm" name="CA_AGAINSTNM" type="text" value="{{$namaprem}}" id="CA_AGAINSTNM">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -898,7 +906,7 @@
                                     <!--<label for="CA_AGAINSTADD" class="col-sm-5 control-label required">Alamat</label>-->
                                     <label for="CA_AGAINSTADD" class="col-sm-5 control-label required">Alamat</label>
                                     <div class="col-sm-7">
-                                        <textarea class="form-control input-sm" rows="4" name="CA_AGAINSTADD" cols="50" id="CA_AGAINSTADD"></textarea>
+                                        <textarea class="form-control input-sm" rows="4" name="CA_AGAINSTADD" cols="50" id="CA_AGAINSTADD">{{$alprem}}</textarea>
                                     </div>
                                 </div>
                                 <div id="div_CA_AGAINST_POSTCD" style="display: block;" class="form-group">
@@ -960,7 +968,7 @@
                                 <div class="form-group">
                                     <label for="CA_SUMMARY" class="col-sm-1 control-label required">Keterangan Aduan</label>
                                     <div class="col-sm-11">
-                                        <textarea class="form-control input-sm" rows="4" name="CA_SUMMARY" cols="50" id="CA_SUMMARY"></textarea>
+                                        <textarea class="form-control input-sm" rows="4" name="CA_SUMMARY" cols="50" id="CA_SUMMARY">{{$keteranganaduan}}</textarea>
                                         <!--<span class="help-block m-b-none help-block-red"></span>-->
                                     </div>
                                 </div>

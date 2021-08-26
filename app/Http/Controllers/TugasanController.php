@@ -184,28 +184,72 @@ class TugasanController extends Controller
         echo '<br/>';
         // dd($array_string);
         
-        # nama
-        $nama = implode(" ", array_slice(explode(" ", $array_string[1]),5));
+        $engl = implode(" ", array_slice(explode(" ", $array_string[0]),0));
+        $engl_string = "Thank you for contacting Whatsapp Aduan KPDNHEP. To file a complaint, please furnish information below:";
+        // dd($engl, $engl_string);
+        if ($engl == $engl_string){
+            # nama
+            $nama = implode(" ", array_slice(explode(" ", $array_string[1]),5));
 
-        # ic number
-        $ic = implode(" ", array_slice(explode(" ", $array_string[2]),3));
+            # ic number
+            $ic = implode(" ", array_slice(explode(" ", $array_string[2]),3));
 
-        # alamat
-        $alamat = implode(" ", array_slice(explode(" ", $array_string[3]),3));
+            # alamat
+            $alamat = implode(" ", array_slice(explode(" ", $array_string[3]),3));
 
-        # telefon
-        $telefon = implode(" ", array_slice(explode(" ", $array_string[4]),3));
+            # telefon
+            $telefon = implode(" ", array_slice(explode(" ", $array_string[4]),3));
 
-        # email
-        $email = implode(" ", array_slice(explode(" ", $array_string[5]),2));
+            # email
+            $email = implode(" ", array_slice(explode(" ", $array_string[5]),2));
 
-        // dd($nama, $ic, $alamat, $telefon, $email);
-        return view('/admin-case.create', [
+            # nama premis
+            $namaprem = implode(" ", array_slice(explode(" ", $array_string[6]),5));
+
+            # alamat premis
+            $alprem = implode(" ", array_slice(explode(" ", $array_string[7]),7));
+
+            # keterangan aduan
+            $keteranganaduan = implode(" ", array_slice(explode(" ", $array_string[8]),4));
+
+            // dd($nama, $ic, $alamat, $telefon, $email);
+        }else{
+            # nama
+            $nama = implode(" ", array_slice(explode(" ", $array_string[2]),4));
+
+            # ic number
+            $ic = implode(" ", array_slice(explode(" ", $array_string[3]),5));
+
+            # alamat
+            $alamat = implode(" ", array_slice(explode(" ", $array_string[4]),4));
+
+            # telefon
+            $telefon = implode(" ", array_slice(explode(" ", $array_string[5]),3));
+
+            # email
+            $email = implode(" ", array_slice(explode(" ", $array_string[6]),2));
+
+            # nama premis
+            $namaprem = implode(" ", array_slice(explode(" ", $array_string[7]),5));
+
+            # alamat premis
+            $alprem = implode(" ", array_slice(explode(" ", $array_string[8]),6));
+
+            # keterangan aduan
+            $keteranganaduan = implode(" ", array_slice(explode(" ", $array_string[9]),3));
+
+            // dd($nama, $ic, $alamat, $telefon, $email);
+        }
+        
+        return view('/admin-case.prefill', [
             'nama' => $nama,
             'ic' => $ic,
             'alamat' => $alamat,
             'telefon' => $telefon,
-            'email' => $email
+            'email' => $email,
+            'namaprem' => $namaprem,
+            'alprem' => $alprem,
+            'keteranganaduan' => $keteranganaduan
         ]);
     }
 
