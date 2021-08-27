@@ -513,7 +513,26 @@
         $('#example').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
+                {
+                extend: 'copy',
+                title: ''
+                },
+                {
+                extend: 'csv',
+                title: ''
+                },
+                {
+                extend: 'excel',
+                title: ''
+                },
+                {
+                extend: 'pdf',
+                title: ''
+                },
+                {
+                extend: 'print',
+                title: ''
+                }
             ]
         });
     });

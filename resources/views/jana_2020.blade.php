@@ -513,13 +513,31 @@
         $('#example').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
+                {
+                extend: 'copy',
+                title: ''
+                },
+                {
+                extend: 'csv',
+                title: ''
+                },
+                {
+                extend: 'excel',
+                title: ''
+                },
+                {
+                extend: 'pdf',
+                title: ''
+                },
+                {
+                extend: 'print',
+                title: ''
+                }
             ]
         });
     });
 
     $('g:has(> g[stroke="#3cabff"])').hide();
-    
 </script>
 
 <script src="https://cdn.amcharts.com/lib/4/core.js"></script>

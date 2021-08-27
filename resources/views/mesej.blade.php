@@ -8,7 +8,7 @@
 <div class="row" style="margin-bottom: 30px;">
     <div class="col-lg-4">
         <a href="/aktif">
-            <button class="btn btn-success btn-block" style="height:120px; border-radius: 12px;">
+            <button class="btn btn-default btn-block" style="height:120px; border-radius: 12px;">
                 <h1>Aktif <i class="fa fa-bell" aria-hidden="true"></i></h1>
             </button>
         </a>
@@ -22,7 +22,7 @@
     </div>
     <div class="col-lg-4">
         <a href="/room">
-            <button class="btn btn-success btn-block" style="height:120px; border-radius: 12px;">
+            <button class="btn btn-default btn-block" style="height:120px; border-radius: 12px;">
                 <h1>Semua <i class="fa fa-circle-o-notch" aria-hidden="true"></i></h1>
             </button>
         </a>

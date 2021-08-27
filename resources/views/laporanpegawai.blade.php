@@ -8,6 +8,9 @@
         width: 100%;
         height: 500px;
     } */
+    .hide {
+        display: none;
+    }
 </style>
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading mb-4">
@@ -261,29 +264,22 @@
 
 <div class="ibox">
     <div class="ibox-content">
-        <div class="col">
-            <div class="tabs-container">
+        <div class="row">
+            <div class="col">
+                <select id="template" class="form-control" onchange="tunjukchart()">
+                    <option value=1 selected>Jumlah Maklumbalas (tutup)</option>
+                    <option value=2>Jumlah aduan dicipta</option>
+                </select>
 
-                <div class="tabs-left">
-                    <ul class="nav nav-tabs">
-                        <li><a class="nav-link" data-toggle="tab" href="#tab-6">Jumlah maklumbalas (tutup)</a></li>
-                        <li><a class="nav-link active" data-toggle="tab" href="#tab-7">Jumlah Aduan dicipta</a></li>
-                    </ul>
-                    <div class="tab-content ">
-                        <div id="tab-6" class="tab-pane">
-                            <div class="panel-body">
-                                <div id="chartdiv1"></div>
-                            </div>
-                        </div>
-                        <div id="tab-7" class="tab-pane active">
-                            <div class="panel-body">
-                                <div id="chartdiv2"></div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="chart m-lg" id="chart1">
+                    <h3 class="text-center">Jumlah maklumbalas (tutup)</h3>
+                    <div class="amchart" id="chartdiv1"></div>
                 </div>
 
+                <div class="chart m-lg hide " id="chart2">
+                    <h3 class="text-center">Jumlah aduan dicipta</h3>
+                    <div class="amchart" id="chartdiv2"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -305,13 +301,30 @@
 <script>
     $(document).ready(function() {
 
-        $('#tab-7').remove();
-        $('#tab-6').remove();
-        
+
         $('#example1').DataTable({
             dom: 'Bfrtip',
             buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
+                {
+                extend: 'copy',
+                title: ''
+                },
+                {
+                extend: 'csv',
+                title: ''
+                },
+                {
+                extend: 'excel',
+                title: ''
+                },
+                {
+                extend: 'pdf',
+                title: ''
+                },
+                {
+                extend: 'print',
+                title: ''
+                }
             ]
         });
     });
@@ -323,8 +336,21 @@
 <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 
-<!-- Chart code -->
+<script type="text/javascript">
+function tunjukchart(){
+    var x = document.getElementById("template");
 
+    if(x.value == 1){
+        document.getElementById("chart1").className = "chart";
+        document.getElementById("chart2").className = "chart hide";
+    }else{
+        document.getElementById("chart1").className = "chart hide";
+        document.getElementById("chart2").className = "chart";
+    }
+}
+</script>
+
+<!-- chart -->
 <script>
     am4core.ready(function() {
 

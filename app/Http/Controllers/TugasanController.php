@@ -122,6 +122,36 @@ class TugasanController extends Controller
             "message_text" => $hantar,
         ]);
 
+       //API Url
+$url = 'https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages';
+
+//Initiate cURL.
+$ch = curl_init($url);
+
+//The JSON data.
+$jsonData = array(
+    "message_text" => $hantar,
+);
+
+//Encode the array into JSON.
+$jsonDataEncoded = json_encode($jsonData);
+
+//Tell cURL that we want to send a POST request.
+curl_setopt($ch, CURLOPT_POST, 1);
+
+//Attach our encoded JSON string to the POST fields.
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+
+//Set the content type to application/json
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+
+//Execute the request
+$result = curl_exec($ch); 
+
+curl_close($ch);
+
+$result_json = var_dump(json_decode($result, true));
+
         // if($send->successful()) {
         //     $url = '/hantar/{{$id}}';
         //     return redirect($url);
@@ -182,10 +212,10 @@ class TugasanController extends Controller
         $long_string = $mesejs[$index]['message_text'];
         $array_string = explode("\n", $long_string);
         echo '<br/>';
-        // dd($array_string);
-        
+
         $engl = implode(" ", array_slice(explode(" ", $array_string[0]),0));
         $engl_string = "Thank you for contacting Whatsapp Aduan KPDNHEP. To file a complaint, please furnish information below:";
+        $mal_string = "Terima kasih kerana menghubungi Whatsapp Aduan KPDNHEP. Bagi melaporkan aduan sila lengkapkan maklumat berikut:";
         // dd($engl, $engl_string);
         if ($engl == $engl_string){
             # nama
@@ -213,7 +243,7 @@ class TugasanController extends Controller
             $keteranganaduan = implode(" ", array_slice(explode(" ", $array_string[8]),4));
 
             // dd($nama, $ic, $alamat, $telefon, $email);
-        }else{
+        }else if (($engl == $mal_string)){
             # nama
             $nama = implode(" ", array_slice(explode(" ", $array_string[2]),4));
 
@@ -239,6 +269,21 @@ class TugasanController extends Controller
             $keteranganaduan = implode(" ", array_slice(explode(" ", $array_string[9]),3));
 
             // dd($nama, $ic, $alamat, $telefon, $email);
+        } else {
+            echo "<script>alert('Sila pilih mesej aduan');</script>";
+
+            $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
+            $response = Http::get($url);
+            $mesejs = $response->json();
+            $try = json_encode($mesejs);
+            $mesejs = json_decode($try, TRUE)['messages'];
+
+            $room = json_decode($try, TRUE)['room'];
+            return view('mesej', [
+                'mesejs' => $mesejs,
+                'room' => $room
+            ]);
+
         }
         
         return view('/admin-case.prefill', [
