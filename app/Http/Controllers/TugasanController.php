@@ -121,42 +121,7 @@ class TugasanController extends Controller
         $send = Http::post($url, [
             "message_text" => $hantar,
         ]);
-
-       //API Url
-$url = 'https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages';
-
-//Initiate cURL.
-$ch = curl_init($url);
-
-//The JSON data.
-$jsonData = array(
-    "message_text" => $hantar,
-);
-
-//Encode the array into JSON.
-$jsonDataEncoded = json_encode($jsonData);
-
-//Tell cURL that we want to send a POST request.
-curl_setopt($ch, CURLOPT_POST, 1);
-
-//Attach our encoded JSON string to the POST fields.
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
-
-//Set the content type to application/json
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
-
-//Execute the request
-$result = curl_exec($ch); 
-
-curl_close($ch);
-
-$result_json = var_dump(json_decode($result, true));
-
-        // if($send->successful()) {
-        //     $url = '/hantar/{{$id}}';
-        //     return redirect($url);
-        // }
-
+        
         $url = "https://murai.io/api/whatsapp/numbers/601154212526/rooms/$id/messages";
         $response = Http::get($url);
         $mesejs = $response->json();
